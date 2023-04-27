@@ -1,8 +1,13 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
+const dotenv = require('dotenv');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/database');
 
+// Load env
+dotenv.config();
+
+// Connect to MongoDB
 connectDB();
 
 // Route files
