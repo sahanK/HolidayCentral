@@ -1,4 +1,5 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const errorHandler = require('./middleware/error');
 
 // Route files
@@ -8,6 +9,8 @@ const app = express();
 
 // Body parser middleware
 app.use(express.json());
+// Access files as req.files
+app.use(fileUpload());
 
 // Mount routers
 app.use('/api/v1/admin', admin);
