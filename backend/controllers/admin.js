@@ -2,6 +2,7 @@ const csv = require("csv-parse");
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../util/error');
 const { flightsCsvColumns } = require('../util/constants');
+const Flight = require('../models/flight');
 
 exports.addFlights = asyncHandler(async (req, res, next) => {
   const file = req.files.file;
@@ -45,4 +46,13 @@ exports.addHotels = asyncHandler(async (req, res, next) => {
 
 exports.addPackages = asyncHandler(async (req, res, next) => {
   return next(new ErrorResponse('addPackages not implemented', 404));
+});
+
+exports.getFlights = asyncHandler(async (req, res, next) => {
+  const flights = await Flight.find({});
+
+  res.status(200).json({
+    message: 'success',
+    data: flights
+  });
 });

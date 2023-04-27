@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const { addFlights } = require('../controllers/admin');
+const { addFlights, getFlights } = require('../controllers/admin');
 
 router
+  .get('/flights', getFlights)
   .post('/flights', addFlights);
 
 module.exports = router;

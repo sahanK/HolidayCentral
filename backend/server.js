@@ -1,6 +1,9 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const errorHandler = require('./middleware/error');
+const connectDB = require('./config/database');
+
+connectDB();
 
 // Route files
 const admin = require('./routes/admin');
