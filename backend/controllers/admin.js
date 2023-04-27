@@ -5,13 +5,17 @@ const { flightsCsvColumns } = require('../util/constants');
 const Flight = require('../models/flight');
 
 exports.addFlights = asyncHandler(async (req, res, next) => {
+  if (!req.files) {
+    return next(new ErrorResponse('Please upload a csv file', 400));
+  }
+
   const file = req.files.file;
 
   if (file.mimetype !== 'text/csv') {
     return next(new ErrorResponse('Please only upload csv files', 400));
   }
 
-  csv.parse(file.data, (err, data) => {
+  csv.parse(file.data, async (err, data) => {
     if (err) {
       return next(new ErrorResponse('Failed to read the file', 500));
     }
@@ -32,10 +36,21 @@ exports.addFlights = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse('The data are not in expected order', 400));
     }
 
-    console.log(data[1]);
+    // Remove first row (column names)
+    data.shift();
 
+    const flights = data.map((flight) => {
+      let flightJson = {};
+      flight.forEach((entry, index) => {
+        flightJson[flightsCsvColumns[index]] = entry;
+      });
+      return flightJson
+    });
+
+    const flightDocs = await Flight.insertMany(flights);
     res.status(200).json({
       message: 'Data uploaded successfully',
+      data: flightDocs
     });
   });
 });
