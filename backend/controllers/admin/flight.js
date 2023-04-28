@@ -1,8 +1,8 @@
 const csv = require("csv-parse");
-const asyncHandler = require('../middleware/async');
-const ErrorResponse = require('../util/error');
-const { flightsCsvColumns } = require('../util/constants');
-const Flight = require('../models/flight');
+const asyncHandler = require('../../middleware/async');
+const ErrorResponse = require('../../util/error');
+const { flightsCsvColumns } = require('../../util/constants');
+const Flight = require('../../models/flight');
 
 exports.addFlights = asyncHandler(async (req, res, next) => {
   if (!req.files) {
@@ -53,10 +53,6 @@ exports.addFlights = asyncHandler(async (req, res, next) => {
       data: flightDocs
     });
   });
-});
-
-exports.addHotels = asyncHandler(async (req, res, next) => {
-  return next(new ErrorResponse('addHotels not implemented', 404));
 });
 
 exports.addPackages = asyncHandler(async (req, res, next) => {
