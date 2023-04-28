@@ -2,6 +2,7 @@ const csv = require("csv-parse");
 const asyncHandler = require('../../middleware/async');
 const ErrorResponse = require('../../util/error');
 const { flightsCsvColumns } = require('../../util/constants');
+const { validateCsvData } = require('../../util/validations');
 const Flight = require('../../models/flight');
 
 exports.addFlights = asyncHandler(async (req, res, next) => {
@@ -19,39 +20,30 @@ exports.addFlights = asyncHandler(async (req, res, next) => {
     if (err) {
       return next(new ErrorResponse('Failed to read the file', 500));
     }
-    const columnNames = data[0];
+    
+    const { rows, error } = validateCsvData(data, flightsCsvColumns);
 
-    if (columnNames.length !== flightsCsvColumns.length) {
-      return next(new ErrorResponse('There are missing or extra columns in your file', 400));
+    if (error) {
+      return next(error);
     }
 
-    let incorrectColumns = false;
-    columnNames.forEach((columnName, columnIndex) => {
-      if (flightsCsvColumns[columnIndex] !== columnName) {
-        incorrectColumns = true;
-      }
-    });
-
-    if (incorrectColumns) {
-      return next(new ErrorResponse('The data are not in expected order', 400));
-    }
-
-    // Remove first row (column names)
-    data.shift();
-
-    const flights = data.map((flight) => {
-      let flightJson = {};
-      flight.forEach((entry, index) => {
-        flightJson[flightsCsvColumns[index]] = entry;
+    if (rows && rows.length > 0) {
+      const flights = rows.map((row) => {
+        let flightJson = {};
+        row.forEach((entry, index) => {
+          flightJson[flightsCsvColumns[index]] = entry;
+        });
+        return flightJson;
       });
-      return flightJson
-    });
+  
+      const flightDocs = await Flight.insertMany(flights);
 
-    const flightDocs = await Flight.insertMany(flights);
-    res.status(200).json({
-      message: 'Data uploaded successfully',
-      data: flightDocs
-    });
+      return res.status(200).json({
+        message: 'Data uploaded successfully',
+        data: flightDocs
+      });
+    }
+    return next(new ErrorResponse('There was no data for the columns', 400));
   });
 });
 

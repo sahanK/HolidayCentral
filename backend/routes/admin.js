@@ -5,7 +5,7 @@ const {
   addFlights,
   getFlights,
   deleteAllFlights
-} = require('../controllers/admin/flight');
+} = require('../controllers/admin/flights');
 const { addHotels } = require('../controllers/admin/hotels');
 
 router
