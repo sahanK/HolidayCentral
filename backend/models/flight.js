@@ -15,6 +15,8 @@ const FlightSchema = new mongoose.Schema({
   airline_name: String,
   airline_country: String,
   airline_iata: String,
+  ticket_price_usd: String,
+  duration: String,
   created_at: {
     type: Date,
     default: Date.now()

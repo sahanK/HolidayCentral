@@ -12,5 +12,7 @@ exports.flightsCsvColumns =   [
   'cabin_class',
   'airline_name',
   'airline_country',
-  'airline_iata'
+  'airline_iata',
+  'ticket_price_usd',
+  'duration'
 ];

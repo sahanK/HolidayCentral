@@ -22,7 +22,7 @@ exports.addFlights = asyncHandler(async (req, res, next) => {
     const columnNames = data[0];
 
     if (columnNames.length !== flightsCsvColumns.length) {
-      return next(new ErrorResponse('There are missing columns in your file', 400));
+      return next(new ErrorResponse('There are missing or extra columns in your file', 400));
     }
 
     let incorrectColumns = false;
@@ -69,5 +69,12 @@ exports.getFlights = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     message: 'success',
     data: flights
+  });
+});
+
+exports.deleteAllFlights = asyncHandler(async (req, res, next) => {
+  await Flight.deleteMany();
+  res.status(200).json({
+    message: 'Deleted all data',
   });
 });
