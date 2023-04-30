@@ -26,7 +26,19 @@ exports.hotelsCsvColumns = [
   'facilities',
   'available_room_types',
   'board_basis'
-]
+];
+
+exports.packagesCsvColumns = [
+  'package_name',
+  'hotel_name',
+  'destination_country',
+  'destination_city',
+  'duration',
+  'num_travelers',
+  'specialty',
+  'price_usd',
+  'rating'
+];
 
 exports.hotelsCsvColumnsFacilitiesIndex = 5;
 exports.hotelsCsvColumnsRoomTypesIndex = 6;
