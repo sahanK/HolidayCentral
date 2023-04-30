@@ -6,7 +6,15 @@ const {
   getFlights,
   deleteAllFlights
 } = require('../controllers/admin/flights');
-const { addHotels } = require('../controllers/admin/hotels');
+
+const {
+  addHotels,
+  getHotels,
+  deleteHotels,
+  getHotel,
+  updateHotel,
+  deleteHotel
+} = require('../controllers/admin/hotels');
 
 const {
   addPackages,
@@ -23,7 +31,14 @@ router
   .delete('/flights', deleteAllFlights);
 
 router
-  .post('/hotels', addHotels);
+  .get('/hotels', getHotels)
+  .post('/hotels', addHotels)
+  .delete('/hotels', deleteHotels);
+
+router
+  .get('/hotels/:id', getHotel)
+  .post('/hotels/:id', updateHotel)
+  .delete('/hotels/:id', deleteHotel);
 
 router
   .get('/packages', getAllPackages)

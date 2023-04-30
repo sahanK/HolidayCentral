@@ -3,7 +3,7 @@ const asyncHandler = require('../../middleware/async');
 const ErrorResponse = require('../../util/error');
 const { validateCsvData } = require('../../util/validations');
 const { packagesCsvColumns } = require("../../util/constants");
-const Package = require('../../models/package');
+const Package = require('../../models/Package');
 
 exports.addPackages = asyncHandler(async (req, res, next) => {
   if (!req.files) {

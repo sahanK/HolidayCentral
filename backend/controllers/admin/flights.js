@@ -3,7 +3,7 @@ const asyncHandler = require('../../middleware/async');
 const ErrorResponse = require('../../util/error');
 const { flightsCsvColumns } = require('../../util/constants');
 const { validateCsvData } = require('../../util/validations');
-const Flight = require('../../models/flight');
+const Flight = require('../../models/Flight');
 
 exports.addFlights = asyncHandler(async (req, res, next) => {
   if (!req.files) {

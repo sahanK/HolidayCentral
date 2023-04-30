@@ -1,11 +1,23 @@
 const mongoose = require('mongoose');
 
 const HotelSchema = new mongoose.Schema({
-  hotel_name: String,
-  destination_country: String,
-  destination_city: String,
+  hotel_name: {
+    type: String,
+    required: true,
+  },
+  destination_country: {
+    type: String,
+    required: true,
+  },
+  destination_city: {
+    type: String,
+    required: true,
+  },
   star_rating: String,
-  price_per_night: String,
+  price_per_night: {
+    type: String,
+    required: true,
+  },
   facilities: [String],
   available_room_types: [String],
   board_basis: [String],
