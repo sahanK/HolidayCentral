@@ -40,6 +40,7 @@ exports.addPackages = asyncHandler(async (req, res, next) => {
   
       return res.status(200).json({
         success: true,
+        message: 'Data uploaded successfully',
         data: packagesDocs
       });
     }
@@ -81,6 +82,7 @@ exports.updatePackage = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    message: `Updated package with id: ${req.params.id}`,
     data: package
   });
 });
