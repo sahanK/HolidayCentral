@@ -39,6 +39,7 @@ exports.addFlights = asyncHandler(async (req, res, next) => {
       const flightDocs = await Flight.insertMany(flights);
 
       return res.status(200).json({
+        success: true,
         message: 'Data uploaded successfully',
         data: flightDocs
       });
@@ -47,22 +48,64 @@ exports.addFlights = asyncHandler(async (req, res, next) => {
   });
 });
 
-exports.addPackages = asyncHandler(async (req, res, next) => {
-  return next(new ErrorResponse('addPackages not implemented', 404));
-});
-
 exports.getFlights = asyncHandler(async (req, res, next) => {
-  const flights = await Flight.find({});
+  const flights = await Flight.find();
 
   res.status(200).json({
-    message: 'success',
+    success: true,
     data: flights
   });
 });
 
-exports.deleteAllFlights = asyncHandler(async (req, res, next) => {
+exports.deleteFlights = asyncHandler(async (req, res, next) => {
   await Flight.deleteMany();
+
   res.status(200).json({
-    message: 'Deleted all data',
+    success: true,
+    message: 'Deleted all flights',
+  });
+});
+
+exports.getFlight = asyncHandler(async (req, res, next) => {
+  const flight = await Flight.findById(req.params.id);
+
+  if (!flight) {
+    return next(new ErrorResponse(`Could not find flight by id: ${req.params.id}`, 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    data: flight
+  });
+});
+
+exports.updateFlight = asyncHandler(async (req, res, next) => {
+  const flight = await Flight.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+
+  if (!flight) {
+    return next(new ErrorResponse(`Could not find flight by id: ${req.params.id}`, 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    message: `Updated flight with id: ${req.params.id}`,
+    data: flight
+  });
+});
+
+exports.deleteFlight = asyncHandler(async (req, res, next) => {
+  const flight = await Flight.findById(req.params.id);
+
+  if (!flight) {
+    return next(new ErrorResponse(`Could not find flight by id: ${req.params.id}`, 404));
+  }
+
+  flight.deleteOne();
+
+  res.status(200).json({
+    success: true,
+    message: `Deleted flight with id: ${req.params.id}`,
   });
 });

@@ -84,7 +84,7 @@ exports.getHotel = asyncHandler(async (req, res, next) => {
   const hotel = await Hotel.findById(req.params.id);
 
   if (!hotel) {
-    return next(new ErrorResponse(`Could not find hotel by id: ${req.params.id}`, 404))
+    return next(new ErrorResponse(`Could not find hotel by id: ${req.params.id}`, 404));
   }
 
   res.status(200).json({
@@ -99,7 +99,7 @@ exports.updateHotel = asyncHandler(async (req, res, next) => {
   });
 
   if (!hotel) {
-    return next(new ErrorResponse(`Could not find hotel by id: ${req.params.id}`, 404))
+    return next(new ErrorResponse(`Could not find hotel by id: ${req.params.id}`, 404));
   }
 
   res.status(200).json({
@@ -113,7 +113,7 @@ exports.deleteHotel = asyncHandler(async (req, res, next) => {
   const hotel = await Hotel.findById(req.params.id);
 
   if (!hotel) {
-    return next(new ErrorResponse(`Could not find hotel by id: ${req.params.id}`, 404))
+    return next(new ErrorResponse(`Could not find hotel by id: ${req.params.id}`, 404));
   }
 
   hotel.deleteOne();

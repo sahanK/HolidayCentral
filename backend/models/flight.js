@@ -1,22 +1,67 @@
 const mongoose = require('mongoose');
 
 const FlightSchema = new mongoose.Schema({
-  arrival_airport: String,
-  arrival_city: String,
-  arrival_country: String,
-  arrival_iata: String,
-  departure_airport: String,
-  departure_city: String,
-  departure_country: String,
-  departure_iata: String,
-  arrival_date: String,
-  departure_date: String,
-  cabin_class: String,
-  airline_name: String,
-  airline_country: String,
-  airline_iata: String,
-  ticket_price_usd: String,
-  duration: String,
+  arrival_airport: {
+    type: String,
+    required: true,
+  },
+  arrival_city: {
+    type: String,
+    required: true,
+  },
+  arrival_country: {
+    type: String,
+    required: true,
+  },
+  arrival_iata: {
+    type: String,
+    required: true,
+  },
+  departure_airport: {
+    type: String,
+    required: true,
+  },
+  departure_city: {
+    type: String,
+    required: true,
+  },
+  departure_country: {
+    type: String,
+    required: true,
+  },
+  departure_iata: {
+    type: String,
+    required: true,
+  },
+  arrival_date: {
+    type: Date,
+    required: true,
+  },
+  departure_date: {
+    type: Date,
+    required: true,
+  },
+  cabin_class: {
+    type: String,
+    required: true,
+  },
+  airline_name: {
+    type: String,
+    required: true,
+  },
+  airline_country: {
+    type: String,
+    required: true,
+  },
+  airline_iata: {
+    type: String,
+    required: true,
+  },
+  ticket_price_usd: {
+    type: Number,
+    required: true,
+  },
+  duration: Number,
   created_at: {
     type: Date,
     default: Date.now()

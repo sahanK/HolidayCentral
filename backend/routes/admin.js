@@ -4,7 +4,10 @@ const router = express.Router();
 const {
   addFlights,
   getFlights,
-  deleteAllFlights
+  deleteFlights,
+  getFlight,
+  updateFlight,
+  deleteFlight
 } = require('../controllers/admin/flights');
 
 const {
@@ -28,7 +31,12 @@ const {
 router
   .get('/flights', getFlights)
   .post('/flights', addFlights)
-  .delete('/flights', deleteAllFlights);
+  .delete('/flights', deleteFlights);
+
+router
+  .get('/flights/:id', getFlight)
+  .put('/flights/:id', updateFlight)
+  .delete('/flights/:id', deleteFlight);
 
 router
   .get('/hotels', getHotels)
@@ -37,7 +45,7 @@ router
 
 router
   .get('/hotels/:id', getHotel)
-  .post('/hotels/:id', updateHotel)
+  .put('/hotels/:id', updateHotel)
   .delete('/hotels/:id', deleteHotel);
 
 router

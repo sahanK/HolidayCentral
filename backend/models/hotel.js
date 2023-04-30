@@ -13,9 +13,9 @@ const HotelSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  star_rating: String,
+  star_rating: Number,
   price_per_night: {
-    type: String,
+    type: Number,
     required: true,
   },
   facilities: [String],
