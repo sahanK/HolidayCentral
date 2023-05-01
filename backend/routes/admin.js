@@ -36,6 +36,8 @@ const {
   updateUser
 } = require('../controllers/admin/users');
 
+const { protect, authorize } = require('../middleware/auth');
+
 router
   .get('/flights', getFlights)
   .post('/flights', addFlights)
@@ -67,7 +69,7 @@ router
   .delete('/packages/:id', deletePackage);
 
 router
-  .get('/users', getUsers)
+  .get('/users', protect, authorize('admin', 'staff'), getUsers)
   .post('/users', addUser);
 
 router
