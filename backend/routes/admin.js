@@ -28,6 +28,14 @@ const {
   deletePackage
 } = require('../controllers/admin/packages');
 
+const {
+  addUser,
+  getUsers,
+  deleteUser,
+  getUser,
+  updateUser
+} = require('../controllers/admin/users');
+
 router
   .get('/flights', getFlights)
   .post('/flights', addFlights)
@@ -57,5 +65,14 @@ router
   .get('/packages/:id', getPackage)
   .put('/packages/:id', updatePackage)
   .delete('/packages/:id', deletePackage);
+
+router
+  .get('/users', getUsers)
+  .post('/users', addUser);
+
+router
+  .get('/users/:id', getUser)
+  .put('/users/:id', updateUser)
+  .delete('/users/:id', deleteUser);
 
 module.exports = router;
