@@ -88,11 +88,13 @@ exports.updatePackage = asyncHandler(async (req, res, next) => {
 });
 
 exports.deletePackage = asyncHandler(async (req, res, next) => {
-  const package = await Package.findByIdAndDelete(req.params.id);
+  const package = await Package.findById(req.params.id);
 
   if (!package) {
     return next(new ErrorResponse(`Could not find package by id: ${req.params.id}`, 404))
   }
+
+  package.deleteOne();
 
   res.status(200).json({
     success: true,

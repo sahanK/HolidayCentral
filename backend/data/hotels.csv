@@ -1,0 +1,38 @@
+hotel_name,destination_country,destination_city,star_rating,price_per_night,facilities,available_room_types,board_basis
+Luxury Hotel,United States,Los Angeles,4.5,250,Pool:Gym:Spa:Free WiFi:Restaurant,Deluxe:Super Deluxe:Suite,Full Board:Breakfast
+The Grand Resort,Thailand,Bangkok,4,120,Pool:Gym:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe,Full Board:Breakfast
+The Beach House,Maldives,Male,5,450,Pool:Beach Access:Spa:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe:Suite,Full Board:Breakfast
+Lakeside Inn,Canada,Toronto,3.5,80,Pool:Free WiFi:Restaurant,Deluxe:Super Deluxe,Full Board:Breakfast
+The Royal Suite,United Arab Emirates,Dubai,5,350,Pool:Gym:Spa:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe:Suite,Full Board:Breakfast
+The Palms Resort,Thailand,Phuket,4.5,200,Pool:Gym:Free WiFi:Restaurant,Deluxe:Super Deluxe,Full Board:Breakfast
+The Ocean View,Maldives,Male,5,550,Pool:Beach Access:Spa:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe:Suite,Full Board:Breakfast
+Mountain Lodge,Canada,Vancouver,3,70,Free WiFi:Restaurant,Deluxe:Super Deluxe,Full Board:Breakfast
+The Crown Plaza,United Arab Emirates,Abu Dhabi,4,150,Pool:Gym:Spa:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe,Full Board:Breakfast
+The Cliff Resort,Thailand,Koh Samui,4,180,Pool:Gym:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe,Full Board:Breakfast
+The Lagoon,Maldives,Male,4.5,400,Pool:Beach Access:Free WiFi:Restaurant,Deluxe:Super Deluxe,Full Board:Breakfast
+The Haven Hotel,Canada,Montreal,3.5,90,Free WiFi:Restaurant,Deluxe:Super Deluxe,Full Board:Breakfast
+The Oasis Hotel,United Arab Emirates,Sharjah,3,120,Pool:Free WiFi:Restaurant,Deluxe:Super Deluxe,Full Board:Breakfast
+The Seaside Resort,Thailand,Phuket,4,220,Pool:Gym:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe,Full Board:Breakfast
+The Sunrise Villa,Maldives,Male,5,500,Pool:Beach Access:Spa:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe:Suite,Full Board:Breakfast
+The Pines Lodge,Canada,Banff,4.5,180,Pool:Gym:Spa:Free WiFi:Restaurant,Deluxe:Super Deluxe,Full Board:Breakfast
+The Grand Hyatt,United Arab Emirates,Dubai,5,400,Pool:Gym:Spa:Free WiFi:Restaurant:Bar,Deluxe:Super Deluxe:Suite,Full Board:Breakfast
+The Sunset Beach Resort,Thailand,Krabi,3.5,100,Pool:Free WiFi:Restaurant,Deluxe:Super Deluxe,Full Board:Breakfast
+Hotel Oasis,Mexico,Cancun,4,150,Pool:Spa:Restaurant:Bar:Gym:Beach Access:Kids Play Area,Deluxe Room:Super Deluxe Room:Suite,Full Board
+Beachside Resort,Thailand,Phuket,3,75,Pool:Restaurant:Bar:Beach Access,Standard Room:Deluxe Room,Bed and Breakfast
+Grand Hotel,France,Paris,5,250,Spa:Restaurant:Bar,Guest Room:Junior Suite,Full Board
+Royal Palace,India,New Delhi,4,120,Pool:Spa:Restaurant:Bar:Gym,Deluxe Room:Super Deluxe Room,Full Board
+Palm Resort,Malaysia,Kuala Lumpur,4,140,Pool:Spa:Restaurant:Bar:Gym:Kids Play Area,Deluxe Room:Super Deluxe Room:Suite,Bed and Breakfast
+The Cove Resort,Australia,Sydney,5,350,Pool:Spa:Restaurant:Bar:Gym:Beach Access,Deluxe Room:Super Deluxe Room:Suite,Full Board
+Island View Hotel,Philippines,Cebu,3,80,Pool:Restaurant:Bar:Beach Access,Standard Room:Deluxe Room,Bed and Breakfast
+Paradise Inn,Mexico,Playa del Carmen,4,200,Pool:Spa:Restaurant:Bar:Gym:Beach Access,Deluxe Room:Super Deluxe Room,Full Board
+Seaside Retreat,Italy,Rome,3,100,Restaurant:Bar:Beach Access,Standard Room:Deluxe Room,Bed and Breakfast
+Mountain View Lodge,Canada,Banff,4,175,Pool:Spa:Restaurant:Bar:Gym:Kids Play Area,Deluxe Room:Super Deluxe Room,Full Board
+Seaview Hotel,Thailand,Krabi,3,85,Pool:Restaurant:Bar:Beach Access,Standard Room:Deluxe Room,Bed and Breakfast
+Golden Sands Resort,Dubai,Dubai,5,300,Pool:Spa:Restaurant:Bar:Gym:Beach Access,Deluxe Room:Super Deluxe Room:Suite,Full Board
+City Lights Hotel,USA,New York City,4,225,Pool:Spa:Restaurant:Bar:Gym,Deluxe Room:Super Deluxe Room,Full Board
+Garden Retreat,Japan,Tokyo,3,110,Pool:Restaurant:Bar:Gym,Standard Room:Deluxe Room:Super Deluxe Room,Bed and Breakfast
+Oceanfront Hotel,Australia,Gold Coast,4,180,Pool:Spa:Restaurant:Bar:Gym:Beach Access,Deluxe Room:Super Deluxe Room,Full Board
+Mountainside Inn,Switzerland,Zermatt,3,95,Restaurant:Bar,Standard Room,Bed and Breakfast
+Sunset Lodge,Maldives,Male,5,500,Pool:Spa:Restaurant:Bar:Gym:Beach Access,Deluxe Room:Super Deluxe Room:Suite,Full Board
+Starlight Hotel,France,Nice,4,200,Pool:Spa:Restaurant:Bar:Gym,Deluxe Room:Super Deluxe Room,Full Board
+Seaview Resort,Thailand,Koh Samui,3,90,Pool:Restaurant:Bar:Beach Access,Standard Room:Deluxe Room,Bed and Breakfast

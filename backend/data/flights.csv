@@ -1,0 +1,25 @@
+arrival_airport,arrival_city,arrival_country,arrival_iata,departure_airport,departure_city,departure_country,departure_iata,arrival_date,departure_date,cabin_class,airline_name,airline_country,airline_iata,ticket_price_usd,duration
+Los Angeles LAX,Los Angeles,United States,LAX,New York JFK,New York,United States,JFK,2023-04-30,2023-04-28,Economy,Delta Air Lines,United States,DL,350,5.5
+Toronto YYZ,Toronto,Canada,YYZ,Vancouver YVR,Vancouver,Canada,YVR,2023-05-05,2023-05-03,Business,WestJet,Canada,WS,700,5
+London LHR,London,United Kingdom,LHR,Madrid MAD,Madrid,Spain,MAD,2023-05-10,2023-05-08,First Class,British Airways,United Kingdom,BA,1500,2.5
+Dubai DXB,Dubai,United Arab Emirates,DXB,New York JFK,New York,United States,JFK,2023-05-15,2023-05-13,Premium Economy,Emirates,United Arab Emirates,EK,1200,15
+Paris CDG,Paris,France,CDG,Tokyo NRT,Tokyo,Japan,NRT,2023-05-20,2023-05-18,Economy,Air France,France,AF,900,11
+Beijing PEK,Beijing,China,PEK,Shanghai PVG,Shanghai,China,PVG,2023-05-25,2023-05-23,First Class,Air China,China,CA,1000,2
+Rio de Janeiro GIG,Rio de Janeiro,Brazil,GIG,Mexico City MEX,Mexico City,Mexico,MEX,2023-05-30,2023-05-28,Economy,Aeromexico,Mexico,AM,400,8
+Seoul ICN,Seoul,South Korea,ICN,New York JFK,New York,United States,JFK,2023-06-04,2023-06-02,Business,Korean Air,South Korea,KE,1400,14
+Sydney SYD,Sydney,Australia,SYD,Los Angeles LAX,Los Angeles,United States,LAX,2023-06-09,2023-06-07,First Class,Qantas,Australia,QF,2000,13
+Hong Kong HKG,Hong Kong,Hong Kong,HKG,New York JFK,New York,United States,JFK,2023-06-14,2023-06-12,Premium Economy,Cathay Pacific,Hong Kong,CX,1600,17
+Berlin TXL,Berlin,Germany,TXL,Amsterdam AMS,Amsterdam,Netherlands,AMS,2023-06-19,2023-06-17,Economy,KLM,Netherlands,KL,200,1
+Bangkok BKK,Bangkok,Thailand,BKK,Singapore SIN,Singapore,Singapore,SIN,2023-06-24,2023-06-22,Business,Singapore Airlines,Singapore,SQ,600,2
+Madrid MAD,Madrid,Spain,MAD,Rome FCO,Rome,Italy,FCO,2023-07-01,2023-06-29,Economy,Iberia,Spain,IB,250,3
+Munich MUC,Munich,Germany,MUC,Lisbon LIS,Lisbon,Portugal,LIS,2023-07-06,2023-07-04,First Class,TAP Air Portugal,Portugal,TP,1800,3.5
+Havana HAV,Havana,Cuba,HAV,Miami MIA,Miami,United States,MIA,2023-07-11,2023-07-09,Business,American Airlines,United States,AA,800,1.5
+Tokyo NRT,Tokyo,Japan,NRT,Seoul ICN,Seoul,South Korea,ICN,2023-07-16,2023-07-14,Premium Economy,Japan Airlines,Japan,JL,500,3
+Barcelona BCN,Barcelona,Spain,BCN,New York JFK,New York,United States,JFK,2023-07-21,2023-07-19,First Class,Delta Air Lines,United States,DL,2500,8
+Venice VCE,Venice,Italy,VCE,Istanbul IST,Istanbul,Turkey,IST,2023-07-26,2023-07-24,Economy,Turkish Airlines,Turkey,TK,400,2.5
+Melbourne MEL,Melbourne,Australia,MEL,Singapore SIN,Singapore,Singapore,SIN,2023-07-31,2023-07-29,First Class,Singapore Airlines,Singapore,SQ,3000,8
+Osaka KIX,Osaka,Japan,KIX,Beijing PEK,Beijing,China,PEK,2023-08-05,2023-08-03,Economy,Air China,China,CA,300,4
+Zurich ZRH,Zurich,Switzerland,ZRH,Athens ATH,Athens,Greece,ATH,2023-08-10,2023-08-08,Premium Economy,Swiss International Air Lines,Switzerland,LX,700,3.5
+Miami MIA,Miami,United States,MIA,Bogota BOG,Bogota,Colombia,BOG,2023-08-15,2023-08-13,Economy,Avianca,Colombia,AV,250,3.5
+Amsterdam AMS,Amsterdam,Netherlands,AMS,Los Angeles LAX,Los Angeles,United States,LAX,2023-08-20,2023-08-18,First Class,KLM,Netherlands,KL,3500,11
+Rome FCO,Rome,Italy,FCO,Toronto YYZ,Toronto,Canada,YYZ,2023-08-25,2023-08-23,Economy,Alitalia,Italy,AZ,400,8

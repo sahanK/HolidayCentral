@@ -2,60 +2,22 @@ const express = require('express');
 const router = express.Router();
 
 const {
-  addFlights,
-  getFlights,
-  deleteFlights,
-  getFlight,
-  updateFlight,
-  deleteFlight
-} = require('../controllers/admin/flights');
+  addUser,
+  getUsers,
+  deleteUser,
+  getUser,
+  updateUser
+} = require('../controllers/admin/users');
 
-const {
-  addHotels,
-  getHotels,
-  deleteHotels,
-  getHotel,
-  updateHotel,
-  deleteHotel
-} = require('../controllers/admin/hotels');
-
-const {
-  addPackages,
-  deleteAllPackages,
-  getAllPackages,
-  getPackage,
-  updatePackage,
-  deletePackage
-} = require('../controllers/admin/packages');
+const { protect, authorize } = require('../middleware/auth');
 
 router
-  .get('/flights', getFlights)
-  .post('/flights', addFlights)
-  .delete('/flights', deleteFlights);
+  .get('/users', protect, authorize('admin'), getUsers)
+  .post('/users', protect, authorize('admin'), addUser);
 
 router
-  .get('/flights/:id', getFlight)
-  .put('/flights/:id', updateFlight)
-  .delete('/flights/:id', deleteFlight);
-
-router
-  .get('/hotels', getHotels)
-  .post('/hotels', addHotels)
-  .delete('/hotels', deleteHotels);
-
-router
-  .get('/hotels/:id', getHotel)
-  .put('/hotels/:id', updateHotel)
-  .delete('/hotels/:id', deleteHotel);
-
-router
-  .get('/packages', getAllPackages)
-  .post('/packages', addPackages)
-  .delete('/packages', deleteAllPackages);
-
-router
-  .get('/packages/:id', getPackage)
-  .put('/packages/:id', updatePackage)
-  .delete('/packages/:id', deletePackage);
+  .get('/users/:id', protect, authorize('admin'), getUser)
+  .put('/users/:id', protect, authorize('admin'), updateUser)
+  .delete('/users/:id', protect, authorize('admin'), deleteUser);
 
 module.exports = router;
