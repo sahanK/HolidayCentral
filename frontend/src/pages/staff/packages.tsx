@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import FlightTableRow from '@/components/FlightTableRow';
 import FileUploadModal from '@/components/FileUploadModal';
+import FlightTableRow from '@/components/FlightTableRow';
 
-const flights = () => {
+const packages: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  
   return (
     <div className='h-full w-full overflow-scroll p-5 space-y-5'>
       <div className='flex flex-row justify-between items-center'>
-        <h3 className='text-2xl font-semibold'>Flights</h3>
+        <h3 className='text-2xl font-semibold'>Packages</h3>
         <button
           className='h-10 flex flex-row justify-center itmes-center bg-grayscale-80 rounded-lg py-2 px-4 text-white hover:bg-grayscale-60'
           onClick={() => setIsOpen(true)}
@@ -44,4 +44,4 @@ const flights = () => {
   );
 };
 
-export default flights;
+export default packages;
