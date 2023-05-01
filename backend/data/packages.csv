@@ -1,0 +1,21 @@
+package_name,hotel_name,destination_country,destination_city,duration,num_travelers,specialty,price_usd,rating
+Romantic Getaway,The Ritz-Carlton,Italy,Rome,7,2,Honeymoon,2800,4.5
+Family Fun Package,Hilton Dubai,UAE,Dubai,10,4,Family Holiday,5400,4.3
+Tropical Escape,The Westin Resort,Mexico,Cancun,5,2,Beach Holiday,1500,4.2
+Wildlife Safari Adventure,Serengeti Safari Lodge,Tanzania,Serengeti,14,2,Wildlife Excursion,6800,4.8
+Luxury Island Retreat,Banyan Tree Resort,Maldives,Male,10,2,Beach Holiday,11000,4.9
+Beachfront Bliss,Sofitel Bali,Indonesia,Bali,7,2,Beach Holiday,2400,4.4
+Enchanting Europe,The Langham,UK,London,14,2,Honeymoon,6200,4.6
+African Safari Experience,Giraffe Manor,Kenya,Nairobi,10,2,Wildlife Excursion,7800,4.7
+Hawaiian Paradise,Grand Hyatt Kauai Resort,USA,Kauai,7,2,Beach Holiday,3400,4.3
+Romantic Caribbean Getaway,Jade Mountain Resort,St. Lucia,Soufriere,5,2,Honeymoon,4900,4.9
+Magical Disney World,Disney's Grand Floridian Resort,USA,Orlando,7,4,Family Holiday,6200,4.5
+Exotic Thailand,Shangri-La Hotel,Thailand,Bangkok,14,2,Beach Holiday,4500,4.2
+Mystical Marrakech,La Mamounia,Morocco,Marrakech,7,2,Honeymoon,3900,4.6
+Family Adventure in Costa Rica,Nayara Tented Camp,Costa Rica,La Fortuna,10,4,Family Holiday,8900,4.8
+Spectacular Swiss Alps,The Chedi Andermatt,Switzerland,Andermatt,7,2,Honeymoon,5800,4.7
+Idyllic Maldives Escape,The St. Regis Maldives,Maldives,Vommuli,10,2,Beach Holiday,10000,4.9
+Jungle Adventure in Brazil,Belmond Hotel das Cataratas,Brazil,Foz do Iguacu,7,2,Wildlife Excursion,4400,4.5
+Greek Island Odyssey,Canaves Oia Suites,Greece,Santorini,10,2,Beach Holiday,7600,4.8
+African Luxury Safari,Singita Boulders Lodge,South Africa,Sabi Sand,14,2,Wildlife Excursion,12000,4.9
+Cultural Exploration in Japan,Aman Tokyo,Japan,Tokyo,7,2,Honeymoon,6400,4.7
