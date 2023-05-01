@@ -12,6 +12,7 @@ connectDB();
 
 // Route files
 const admin = require('./routes/admin');
+const staff = require('./routes/staff');
 const auth = require('./routes/auth');
 
 const app = express();
@@ -23,6 +24,7 @@ app.use(fileUpload());
 
 // Mount routers
 app.use('/api/v1/admin', admin);
+app.use('/api/v1/staff', staff);
 app.use('/api/v1/auth', auth);
 
 // Error handling middleware
