@@ -28,7 +28,13 @@ exports.login = asyncHandler(async (req, res, next) => {
     httpOnly: true,
   }).json({
     success: true,
-    data: token,
+    data: {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      role: user.role,
+    },
+    token: token,
   });
 });
 
