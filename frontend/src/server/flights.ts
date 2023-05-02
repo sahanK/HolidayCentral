@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 export const addFlights = async (file: any): Promise<AddFlightsAPIResponse | null> => {
   try {
@@ -12,7 +12,7 @@ export const addFlights = async (file: any): Promise<AddFlightsAPIResponse | nul
     });
     const apiResponse: AddFlightsAPIResponse = response.data;
     return apiResponse;
-  } catch (error: any | AxiosError) {
+  } catch (error) {
     console.error(error);
     if (axios.isAxiosError(error)) {
       const errorResponse: AddFlightsAPIResponse = error.response?.data
