@@ -1,0 +1,21 @@
+type Flight = {
+  _id: string;
+  arrival_airport: string;
+  arrival_city: string;
+  arrival_country: string;
+  arrival_iata: string;
+  departure_airport: string;
+  departure_city: string;
+  departure_country: string;
+  departure_iata: string;
+  arrival_date: string;
+  departure_date: string;
+  cabin_class: string;
+  airline_name: string;
+  airline_country: string;
+  airline_iata: string;
+  ticket_price_usd: number;
+  duration: number;
+  created_at: string;
+  updated_at: string;
+};

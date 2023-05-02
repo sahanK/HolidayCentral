@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FileUploadModal from '@/components/FileUploadModal';
-import FlightTableRow from '@/components/FlightTableRow';
+import FlightTableRow from '@/components/FlightsTable/FlightTableRow';
 
 const packages: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

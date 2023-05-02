@@ -1,9 +1,57 @@
-import React, { useState } from 'react';
-import FlightTableRow from '@/components/FlightTableRow';
+import React, { useEffect, useState } from 'react';
 import FileUploadModal from '@/components/FileUploadModal';
+import FlightsTable from '@/components/FlightsTable/FlightsTable';
+import BeatLoader from "react-spinners/BeatLoader";
+import { addFlights, getFlights } from '@/server/flights';
 
 const flights = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [flightsData, setFlightsData] = useState<Flight[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'danger', message: string }>();
+
+  useEffect(() => {
+    const fetchFlights = async () => {
+      const apiResponse = await getFlights();
+      if (apiResponse && apiResponse.data) {
+        setFlightsData(apiResponse.data);
+        setIsLoading(false)
+      }
+    }
+
+    fetchFlights();
+  }, [getFlights]);
+
+  const uploadFile = async (selectedFile: any) => {
+    setIsUploading(true);
+    const apiResponse = await addFlights(selectedFile);
+    setIsUploading(false);
+    if (apiResponse) {
+      setResponseMessage({
+        type: apiResponse.success ? 'success' : 'danger',
+        message: apiResponse.success ? apiResponse.message! : apiResponse.error!
+      });
+      if (apiResponse.data) {
+        setFlightsData((prevValue) => [...prevValue, ...apiResponse.data!])
+      }
+    }
+    setIsOpen(false);
+  }
+
+  useEffect(() => {
+    if (responseMessage) {
+      setTimeout(() => setResponseMessage(undefined), 4000);
+    }
+  }, [responseMessage]);
+
+  if (isLoading) {
+    return (
+      <div className='h-full w-full flex flex-col justify-center items-center'>
+        <BeatLoader/>
+      </div>
+    )
+  }
 
   return (
     <div className='h-full w-full overflow-scroll p-5 space-y-5'>
@@ -19,27 +67,14 @@ const flights = () => {
           Add new data
         </button>
       </div>
-      <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md">
-        <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
-          <thead className="bg-gray-50">
-            <tr>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Airline</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Arrival</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Departure</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Duration</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Cabin class</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Price</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900"/>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-          {
-            Array(10).fill(0).map((row) => <FlightTableRow />)
-          }
-          </tbody>
-        </table>
-      </div>
-      <FileUploadModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      {!isLoading && flightsData.length > 0 && <FlightsTable data={flightsData} />}
+      <FileUploadModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        isUploading={isUploading}
+        responseMessage={responseMessage}
+        uploadFile={uploadFile}        
+      />
     </div>
   );
 };
