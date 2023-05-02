@@ -10,3 +10,10 @@ type GetFlightsAPIResponse = {
   error?: string;
   data?: Flight[];
 };
+
+type LoginAPIResponse = {
+  success: boolean;
+  error?: string;
+  data?: User;
+  token?: string;
+};

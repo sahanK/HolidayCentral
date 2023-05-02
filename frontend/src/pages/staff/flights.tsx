@@ -3,20 +3,25 @@ import FileUploadModal from '@/components/FileUploadModal';
 import FlightsTable from '@/components/FlightsTable/FlightsTable';
 import BeatLoader from "react-spinners/BeatLoader";
 import { addFlights, getFlights } from '@/server/flights';
+import { useAppSelector } from '@/redux/hooks';
 
 const flights = () => {
+  const token = useAppSelector(state => state.user.token);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [flightsData, setFlightsData] = useState<Flight[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'danger', message: string }>();
 
   useEffect(() => {
     const fetchFlights = async () => {
-      const apiResponse = await getFlights();
-      if (apiResponse && apiResponse.data) {
-        setFlightsData(apiResponse.data);
-        setIsLoading(false)
+      if (token) {
+        setIsLoading(true);
+        const apiResponse = await getFlights(token);
+        if (apiResponse && apiResponse.data) {
+          setFlightsData(apiResponse.data);
+          setIsLoading(false)
+        }
       }
     }
 
@@ -24,19 +29,21 @@ const flights = () => {
   }, [getFlights]);
 
   const uploadFile = async (selectedFile: any) => {
-    setIsUploading(true);
-    const apiResponse = await addFlights(selectedFile);
-    setIsUploading(false);
-    if (apiResponse) {
-      setResponseMessage({
-        type: apiResponse.success ? 'success' : 'danger',
-        message: apiResponse.success ? apiResponse.message! : apiResponse.error!
-      });
-      if (apiResponse.data) {
-        setFlightsData((prevValue) => [...prevValue, ...apiResponse.data!])
+    if (token) {
+      setIsUploading(true);
+      const apiResponse = await addFlights(selectedFile, token);
+      setIsUploading(false);
+      if (apiResponse) {
+        setResponseMessage({
+          type: apiResponse.success ? 'success' : 'danger',
+          message: apiResponse.success ? apiResponse.message! : apiResponse.error!
+        });
+        if (apiResponse.data) {
+          setFlightsData((prevValue) => [...prevValue, ...apiResponse.data!])
+        }
       }
+      setIsOpen(false);
     }
-    setIsOpen(false);
   }
 
   useEffect(() => {

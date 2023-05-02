@@ -34,12 +34,12 @@ const packages: React.FC = () => {
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
           {
-            Array(10).fill(0).map((row) => <FlightTableRow />)
+            // Array(10).fill(0).map((row) => <FlightTableRow />)
           }
           </tbody>
         </table>
       </div>
-      <FileUploadModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* <FileUploadModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
     </div>
   );
 };

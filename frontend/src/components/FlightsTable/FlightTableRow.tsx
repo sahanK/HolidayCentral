@@ -2,9 +2,11 @@ import React from 'react';
 
 type FlightTableRowProps = {
   flightData: Flight;
+  onUpdateClick: (data: Flight) => void;
+  onDeleteClick: () => void;
 }
 
-const FlightTableRow: React.FC<FlightTableRowProps> = ({ flightData }) => {
+const FlightTableRow: React.FC<FlightTableRowProps> = ({ flightData, onUpdateClick, onDeleteClick }) => {
   return (
     <tr className="hover:bg-gray-50">
       <td className="px-6 py-4 font-normal text-gray-900">
@@ -38,10 +40,10 @@ const FlightTableRow: React.FC<FlightTableRowProps> = ({ flightData }) => {
       </td>
       <td className="px-6 py-4">
         <div className="flex justify-end gap-4">
-          <div className='p-2 rounded-full hover:bg-gray-200'>
+          <div className='p-2 rounded-full hover:bg-gray-200' onClick={onDeleteClick}>
             <img src='/delete.svg' className='h-6 w-6' />
           </div>
-          <div className='p-2 rounded-full hover:bg-gray-200'>
+          <div className='p-2 rounded-full hover:bg-gray-200' onClick={() => onUpdateClick(flightData)}>
             <img src='/edit.svg' className='h-6 w-6' />
           </div>
         </div>
