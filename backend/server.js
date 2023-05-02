@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload');
 const dotenv = require('dotenv');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/database');
+const cors = require('cors');
 
 // Load env
 dotenv.config();
@@ -17,6 +18,8 @@ const auth = require('./routes/auth');
 
 const app = express();
 
+// Enable CORS
+app.use(cors());
 // Body parser middleware
 app.use(express.json());
 // Access files as req.files
