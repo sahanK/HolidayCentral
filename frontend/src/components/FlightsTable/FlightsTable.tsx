@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FlightTableRow from './FlightTableRow';
+import UpdateFlightModal from '../UpdateFlightModal';
 
 type FlightsTableProps = {
   data: Flight[]
 }
 
 const FlightsTable: React.FC<FlightsTableProps> = ({ data }) => {
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState<boolean>(false);
+  const [selectedFlightData, setSelectedFlightData] = useState<Flight>();
+
+  const onUpdateClick = async (flight: Flight) => {
+    setIsUpdateModalOpen(true);
+    setSelectedFlightData(flight);
+  };
+  
   return (
     <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md">
       <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
@@ -22,10 +31,18 @@ const FlightsTable: React.FC<FlightsTableProps> = ({ data }) => {
         </thead>
         <tbody className="divide-y divide-gray-100 border-t border-gray-100">
         {
-          data.map((flightData) => <FlightTableRow key={flightData._id} flightData={flightData} />)
+          data.map((flightData) => (
+            <FlightTableRow
+              key={flightData._id}
+              flightData={flightData}
+              onUpdateClick={onUpdateClick}
+              onDeleteClick={() => {}}
+            />
+          ))
         }
         </tbody>
       </table>
+      {selectedFlightData && <UpdateFlightModal isOpen={isUpdateModalOpen} setIsOpen={setIsUpdateModalOpen} flightData={selectedFlightData!} />}
     </div>
   );
 };

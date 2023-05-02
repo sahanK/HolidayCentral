@@ -9,13 +9,14 @@ const flights = () => {
   const token = useAppSelector(state => state.user.token);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [flightsData, setFlightsData] = useState<Flight[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'danger', message: string }>();
 
   useEffect(() => {
     const fetchFlights = async () => {
       if (token) {
+        setIsLoading(true);
         const apiResponse = await getFlights(token);
         if (apiResponse && apiResponse.data) {
           setFlightsData(apiResponse.data);
