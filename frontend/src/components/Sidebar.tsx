@@ -42,8 +42,9 @@ const Sidebar: React.FC = () => {
             className={`${currentPage.path === page.path && 'bg-grayscale-60'} flex flex-row items-center space-x-2 p-2 mb-2 rounded-lg hover:bg-grayscale-60`}
             onClick={() => {
               setCurrentPage(page);
-              router.push(page.path);
+              router.replace(page.path);
             }}
+            key={page.path}
           >
             <h3 className='text-white'>{page.label}</h3>
           </div>
