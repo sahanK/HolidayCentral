@@ -3,8 +3,10 @@ import { useAppDispatch } from '@/redux/hooks';
 import { setToken, setUser } from '@/redux/sclices/userSlice';
 import { authLogin } from '@/server/auth';
 import ResponseMessage from '@/components/ResponseMessage';
+import { useRouter } from 'next/router';
 
 const login: React.FC = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
 
   const [emailInput, setEmailInput] = useState<string>('');
@@ -18,6 +20,13 @@ const login: React.FC = () => {
       if (apiResponse && apiResponse.token && apiResponse.data && !apiResponse.error) {
         dispatch(setUser(apiResponse.data));
         dispatch(setToken(apiResponse.token));
+        if (apiResponse.data.role === 'staff') {
+          router.push('/staff');
+        } else if (apiResponse.data.role === 'admin') {
+          router.push('/admin');
+        } else if (apiResponse.data.role === 'agent') {
+          router.push('/agent');
+        }
       } else if (apiResponse && !apiResponse.success && apiResponse?.error) {
         setResponseMessage({ type: 'danger', message: apiResponse.error });
       }

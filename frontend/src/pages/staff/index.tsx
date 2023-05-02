@@ -1,8 +1,16 @@
+import { useAppSelector } from '@/redux/hooks';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const staff: React.FC = () => {
   const router = useRouter();
+  const user = useAppSelector(state => state.user.user);
+
+  useEffect(() => {
+    if (!user || user.role !== 'staff') {
+      router.replace('/login');
+    }
+  }, [router, user]);
 
   return (
     <div className='h-full w-full flex flex-row justify-center items-center space-x-10 p-10'>

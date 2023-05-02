@@ -1,4 +1,3 @@
-import Sidebar from '@/components/Sidebar'
 import Topbar from '@/components/Topbar'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
@@ -13,7 +12,6 @@ const App = ({ Component, pageProps, ...appProps }: AppProps) => {
     }
     return (
       <div className='h-screen w-screen flex flex-row'>
-        <Sidebar />
         <div className='h-full w-full flex flex-col'>
           <Topbar />
           <Component {...pageProps} />
