@@ -1,22 +1,14 @@
-const express = require('express');
-const errorHandler = require('./middleware/error');
-
-// Route files
-const admin = require('./routes/admin');
+const express = require("express");
 
 const app = express();
 
-// Body parser middleware
-app.use(express.json());
+const dbcofig = require("./db")
 
-// Mount routers
-app.use('/api/v1/admin', admin);
+const roomsRoute = require("./routers/roomsroute")
 
-// Error handling middleware
-app.use(errorHandler);
+app.use("/api/rooms" , roomsRoute)
 
-const PORT = 8080;
+// app.listen(8080)
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running at port ${8080}`);
-});
+app.listen(port, () => console.log("node server using  nodemon started ") )
