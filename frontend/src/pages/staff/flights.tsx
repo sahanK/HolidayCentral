@@ -46,7 +46,6 @@ const flights = () => {
           dispatch(updateFlights(apiResponse.data));
         }
       }
-      setIsOpen(false);
     }
   }
 

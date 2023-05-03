@@ -24,6 +24,14 @@ type DeleteFlightAPIResponse = {
   error?: string;
 };
 
+type AddHotelsAPIResponse = {
+  success: boolean;
+  message?: string;
+  error?: string;
+  data?: Hotel[];
+};
+
+
 type LoginAPIResponse = {
   success: boolean;
   error?: string;

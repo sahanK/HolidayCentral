@@ -1,9 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import BeatLoader from "react-spinners/BeatLoader";
 import FileUploadModal from '@/components/FileUploadModal';
-import FlightTableRow from '@/components/FlightsTable/FlightTableRow';
+import { useAuth } from '@/hooks/useAuth';
+import { addHotels } from '@/server/hotels';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { updateHotels } from '@/redux/sclices/hotelsClice';
+import HotelsTable from '@/components/HotelsTable/HotelsTable';
 
 const hotels: React.FC = () => {
+  const { token, loading: pageLoading } = useAuth();
+  const hotels = useAppSelector((state) => state.hotels.hotels);
+  const dispatch = useAppDispatch();
+  
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'danger', message: string }>();
+
+  const uploadFile = async (selectedFile: any) => {
+    if (token) {
+      setIsUploading(true);
+      const apiResponse = await addHotels(selectedFile, token);
+      setIsUploading(false);
+      if (apiResponse) {
+        setResponseMessage({
+          type: apiResponse.success ? 'success' : 'danger',
+          message: apiResponse.success ? apiResponse.message! : apiResponse.error!
+        });
+        if (apiResponse.data) {
+          dispatch(updateHotels(apiResponse.data));
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (responseMessage) {
+      setTimeout(() => setResponseMessage(undefined), 4000);
+    }
+  }, [responseMessage]);
+
+  if (pageLoading) {
+    return (
+      <div className='h-full w-full flex flex-col justify-center items-center'>
+        <BeatLoader/>
+      </div>
+    )
+  }
   
   return (
     <div className='h-full w-full overflow-scroll p-5 space-y-5'>
@@ -19,27 +61,14 @@ const hotels: React.FC = () => {
           Add new data
         </button>
       </div>
-      <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md">
-        <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
-          <thead className="bg-gray-50">
-            <tr>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Airline</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Arrival</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Departure</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Duration</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Cabin class</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Price</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900"/>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-          {
-            // Array(10).fill(0).map((row) => <FlightTableRow />)
-          }
-          </tbody>
-        </table>
-      </div>
-      {/* <FileUploadModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
+      {hotels.length > 0 && <HotelsTable data={hotels} />}
+      <FileUploadModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        isUploading={isUploading}
+        responseMessage={responseMessage}
+        uploadFile={uploadFile}
+      />
     </div>
   );
 };

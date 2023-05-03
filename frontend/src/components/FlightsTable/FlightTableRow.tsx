@@ -40,10 +40,10 @@ const FlightTableRow: React.FC<FlightTableRowProps> = ({ flightData, onUpdateCli
       </td>
       <td className="px-6 py-4">
         <div className="flex justify-end gap-4">
-          <div className='p-2 rounded-full hover:bg-gray-200' onClick={() => onDeleteClick(flightData)}>
+          <div className='h-10 w-10 p-2 rounded-full hover:bg-gray-200' onClick={() => onDeleteClick(flightData)}>
             <img src='/delete.svg' className='h-6 w-6' />
           </div>
-          <div className='p-2 rounded-full hover:bg-gray-200' onClick={() => onUpdateClick(flightData)}>
+          <div className='h-10 w-10 p-2 rounded-full hover:bg-gray-200' onClick={() => onUpdateClick(flightData)}>
             <img src='/edit.svg' className='h-6 w-6' />
           </div>
         </div>

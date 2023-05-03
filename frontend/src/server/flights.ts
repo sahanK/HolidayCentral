@@ -4,7 +4,7 @@ export const addFlights = async (file: any, token: string): Promise<AddFlightsAP
   try {
     const formData = new FormData();
     formData.append('file', file);
-    const response = await axios.post('https://holidaycentral-production.up.railway.app/api/v1/staff/flights', formData, {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/staff/flights`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token}`
@@ -24,7 +24,7 @@ export const addFlights = async (file: any, token: string): Promise<AddFlightsAP
 
 export const getFlights = async (token: string): Promise<GetFlightsAPIResponse | null> => {
   try {
-    const response = await axios.get('https://holidaycentral-production.up.railway.app/api/v1/staff/flights', {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/staff/flights`, {
       headers: {
         'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token}`
@@ -44,7 +44,7 @@ export const getFlights = async (token: string): Promise<GetFlightsAPIResponse |
 
 export const updateFlight = async (flightData: Flight, token: string): Promise<UpdateFlightAPIResponse | null> => {
   try {
-    const response = await axios.put(`https://holidaycentral-production.up.railway.app/api/v1/staff/flights/${flightData._id}`, {
+    const response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/staff/flights/${flightData._id}`, {
       ...flightData,
     }, {
       headers: {
@@ -66,7 +66,7 @@ export const updateFlight = async (flightData: Flight, token: string): Promise<U
 
 export const deleteFlight = async (flightData: Flight, token: string): Promise<DeleteFlightAPIResponse | null> => {
   try {
-    const response = await axios.delete(`https://holidaycentral-production.up.railway.app/api/v1/staff/flights/${flightData._id}`, {
+    const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/staff/flights/${flightData._id}`, {
       headers: {
         'Content-Type': 'multipart/form-data',
         'Authorization': `Bearer ${token}`
