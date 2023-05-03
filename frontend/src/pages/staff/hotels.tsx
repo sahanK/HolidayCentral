@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import BeatLoader from "react-spinners/BeatLoader";
 import FileUploadModal from '@/components/FileUploadModal';
 import { useAuth } from '@/hooks/useAuth';
-import { addHotels } from '@/server/hotels';
+import { addHotels, getHotels } from '@/server/hotels';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { updateHotels } from '@/redux/sclices/hotelsClice';
+import { setHotels, updateHotels } from '@/redux/sclices/hotelsClice';
 import HotelsTable from '@/components/HotelsTable/HotelsTable';
 
 const hotels: React.FC = () => {
@@ -13,8 +13,24 @@ const hotels: React.FC = () => {
   const dispatch = useAppDispatch();
   
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'danger', message: string }>();
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      if (token && !pageLoading) {
+        setIsFetching(true);
+        const apiResponse = await getHotels(token);
+        if (apiResponse && apiResponse.data) {
+          dispatch(setHotels(apiResponse.data));
+          setIsFetching(false);
+        }
+      }
+    }
+
+    fetchHotels();
+  }, [getHotels, pageLoading]);
 
   const uploadFile = async (selectedFile: any) => {
     if (token) {
@@ -39,7 +55,7 @@ const hotels: React.FC = () => {
     }
   }, [responseMessage]);
 
-  if (pageLoading) {
+  if (isFetching || pageLoading) {
     return (
       <div className='h-full w-full flex flex-col justify-center items-center'>
         <BeatLoader/>

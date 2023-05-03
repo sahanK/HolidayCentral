@@ -31,6 +31,11 @@ type AddHotelsAPIResponse = {
   data?: Hotel[];
 };
 
+type GetHotelsAPIResponse = {
+  success: boolean;
+  error?: string;
+  data?: Hotel[];
+};
 
 type LoginAPIResponse = {
   success: boolean;

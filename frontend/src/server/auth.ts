@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const authLogin = async (email: string, password: string): Promise<LoginAPIResponse | null> => {
   try {
-    const response = await axios.post('https://holidaycentral-production.up.railway.app/api/v1/auth/login', {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
       email,
       password
     }, {
