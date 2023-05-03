@@ -3,12 +3,15 @@ import FileUploadModal from '@/components/FileUploadModal';
 import FlightsTable from '@/components/FlightsTable/FlightsTable';
 import BeatLoader from "react-spinners/BeatLoader";
 import { addFlights, getFlights } from '@/server/flights';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setFlights, updateFlights } from '@/redux/sclices/flightsSlice';
 
 const flights = () => {
   const token = useAppSelector(state => state.user.token);
+  const flights = useAppSelector(state => state.flights.flights);
+  const dispatch = useAppDispatch();
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [flightsData, setFlightsData] = useState<Flight[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'danger', message: string }>();
@@ -19,7 +22,7 @@ const flights = () => {
         setIsLoading(true);
         const apiResponse = await getFlights(token);
         if (apiResponse && apiResponse.data) {
-          setFlightsData(apiResponse.data);
+          dispatch(setFlights(apiResponse.data));
           setIsLoading(false)
         }
       }
@@ -39,7 +42,7 @@ const flights = () => {
           message: apiResponse.success ? apiResponse.message! : apiResponse.error!
         });
         if (apiResponse.data) {
-          setFlightsData((prevValue) => [...prevValue, ...apiResponse.data!])
+          dispatch(updateFlights(apiResponse.data));
         }
       }
       setIsOpen(false);
@@ -74,7 +77,7 @@ const flights = () => {
           Add new data
         </button>
       </div>
-      {!isLoading && flightsData.length > 0 && <FlightsTable data={flightsData} />}
+      {!isLoading && flights.length > 0 && <FlightsTable data={flights} />}
       <FileUploadModal
         isOpen={isOpen}
         setIsOpen={setIsOpen}

@@ -11,6 +11,13 @@ type GetFlightsAPIResponse = {
   data?: Flight[];
 };
 
+type UpdateFlightAPIResponse = {
+  success: boolean;
+  message?: string;
+  error?: string;
+  data?: Flight;
+}
+
 type LoginAPIResponse = {
   success: boolean;
   error?: string;

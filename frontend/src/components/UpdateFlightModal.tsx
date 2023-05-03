@@ -1,19 +1,54 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Transition, Dialog } from '@headlessui/react';
 import { BeatLoader } from 'react-spinners';
 import ResponseMessage from './ResponseMessage';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { updateFlight as updateFlightApi } from '@/server/flights';
+import { updateFlight } from '@/redux/sclices/flightsSlice';
 
 type UpdateFlightModal = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  flightData: Flight
+  flightData: Flight,
 };
 
 const UpdateFlightModal: React.FC<UpdateFlightModal> = ({ isOpen, setIsOpen, flightData }) => {
+  const token = useAppSelector((state) => state.user.token);
+  const dispatch = useAppDispatch();
+
   const [arrivalDateInput, setArrivalDateInput] = useState<string>(flightData.arrival_date);
   const [departureDateInput, setDepartureDateInput] = useState<string>(flightData.departure_date);
   const [ticketPriceInput, setTicketPriceInput] = useState<string>(flightData.ticket_price_usd.toString());
   const [cabinClassInput, setCabinClassInput] = useState<string>(flightData.cabin_class);
+  const [responseMessage, setResponseMessage] = useState<{ type: "success" | "danger", message: string}>();
+  const [isUpdating, setIsUpdating] = useState<boolean>(false);
+
+  const onUpdateClick = async () => {
+    if (token) {
+      setIsUpdating(true);
+      const requestBody: Flight = {
+        ...flightData,
+        arrival_date: arrivalDateInput,
+        departure_date: departureDateInput,
+        ticket_price_usd: Number(ticketPriceInput),
+        cabin_class: cabinClassInput,
+      };
+      const apiResponse = await updateFlightApi(requestBody, token);
+      setIsUpdating(false);
+      if (apiResponse && apiResponse.success && apiResponse.data && apiResponse.message) {
+        dispatch(updateFlight(apiResponse.data));
+        setResponseMessage({ type: 'success', message: apiResponse.message});
+      } else if (apiResponse && apiResponse.error) {
+        setResponseMessage({ type: 'danger', message: apiResponse.error});
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (responseMessage) {
+      setTimeout(() => setResponseMessage(undefined), 4000);
+    }
+  }, [responseMessage]);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -91,10 +126,13 @@ const UpdateFlightModal: React.FC<UpdateFlightModal> = ({ isOpen, setIsOpen, fli
                   </div>
                   <button
                     type="button"
-                    className="bg-grayscale-80 hover:bg-grayscale-60 text-white w-full py-2.5 rounded-lg text-sm font-semibold text-center"
+                    className="bg-grayscale-80 hover:bg-grayscale-60 text-white w-full py-2.5 rounded-lg text-sm font-semibold text-center mb-[16px]"
+                    onClick={onUpdateClick}
+                    disabled={isUpdating}
                   >
-                    Update
+                    {isUpdating ? <BeatLoader color='#FFFFFF' size={10} /> : <span>Update</span>}
                   </button>
+                  {responseMessage && <ResponseMessage type={responseMessage.type} message={responseMessage.message} />}
                 </form>
               </Dialog.Panel>
             </Transition.Child>

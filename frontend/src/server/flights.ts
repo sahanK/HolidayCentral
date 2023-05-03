@@ -40,4 +40,26 @@ export const getFlights = async (token: string): Promise<GetFlightsAPIResponse |
     }
     return null;
   }
-}
+};
+
+export const updateFlight = async (flightData: Flight, token: string): Promise<UpdateFlightAPIResponse | null> => {
+  try {
+    const response = await axios.put(`https://holidaycentral-production.up.railway.app/api/v1/staff/flights/${flightData._id}`, {
+      ...flightData,
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const apiResponse: UpdateFlightAPIResponse = response.data;
+    return apiResponse
+  } catch (error) {
+    console.error(error);
+    if (axios.isAxiosError(error)) {
+      const errorResponse: UpdateFlightAPIResponse = error.response?.data
+      return errorResponse;
+    }
+    return null;
+  }
+};
