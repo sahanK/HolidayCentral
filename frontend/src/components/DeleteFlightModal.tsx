@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppDispatch } from '@/redux/hooks';
 import { deleteFlight } from '@/redux/sclices/flightsSlice';
 import { deleteFlight as deleteFlightApi } from '@/server/flights';
 import { Transition, Dialog } from '@headlessui/react';
 import ResponseMessage from './ResponseMessage';
+import { useAuth } from '@/hooks/useAuth';
 
 type DeleteFlightModalProps = {
   isOpen: boolean;
@@ -13,7 +14,7 @@ type DeleteFlightModalProps = {
 }
 
 const DeleteFlightModal: React.FC<DeleteFlightModalProps> = ({ isOpen, setIsOpen, flightData }) => {
-  const token = useAppSelector((state) => state.user.token);
+  const { token } = useAuth();
   const dispatch = useAppDispatch();
 
   const [responseMessage, setResponseMessage] = useState<{ type: "success" | "danger", message: string}>();

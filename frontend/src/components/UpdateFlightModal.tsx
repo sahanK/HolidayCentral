@@ -2,9 +2,10 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Transition, Dialog } from '@headlessui/react';
 import { BeatLoader } from 'react-spinners';
 import ResponseMessage from './ResponseMessage';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppDispatch } from '@/redux/hooks';
 import { updateFlight as updateFlightApi } from '@/server/flights';
 import { updateFlight } from '@/redux/sclices/flightsSlice';
+import { useAuth } from '@/hooks/useAuth';
 
 type UpdateFlightModal = {
   isOpen: boolean;
@@ -13,7 +14,7 @@ type UpdateFlightModal = {
 };
 
 const UpdateFlightModal: React.FC<UpdateFlightModal> = ({ isOpen, setIsOpen, flightData }) => {
-  const token = useAppSelector((state) => state.user.token);
+  const { token } = useAuth();
   const dispatch = useAppDispatch();
 
   const [arrivalDateInput, setArrivalDateInput] = useState<string>(flightData.arrival_date);

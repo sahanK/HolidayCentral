@@ -5,9 +5,10 @@ import BeatLoader from "react-spinners/BeatLoader";
 import { addFlights, getFlights } from '@/server/flights';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setFlights, updateFlights } from '@/redux/sclices/flightsSlice';
+import { useAuth } from '@/hooks/useAuth';
 
 const flights = () => {
-  const token = useAppSelector(state => state.user.token);
+  const { loading: pageLoading, token } = useAuth();
   const flights = useAppSelector(state => state.flights.flights);
   const dispatch = useAppDispatch();
 
@@ -18,7 +19,7 @@ const flights = () => {
 
   useEffect(() => {
     const fetchFlights = async () => {
-      if (token) {
+      if (token && !pageLoading) {
         setIsLoading(true);
         const apiResponse = await getFlights(token);
         if (apiResponse && apiResponse.data) {
@@ -29,7 +30,7 @@ const flights = () => {
     }
 
     fetchFlights();
-  }, [getFlights]);
+  }, [getFlights, pageLoading]);
 
   const uploadFile = async (selectedFile: any) => {
     if (token) {
@@ -55,7 +56,7 @@ const flights = () => {
     }
   }, [responseMessage]);
 
-  if (isLoading) {
+  if (isLoading || pageLoading) {
     return (
       <div className='h-full w-full flex flex-col justify-center items-center'>
         <BeatLoader/>
