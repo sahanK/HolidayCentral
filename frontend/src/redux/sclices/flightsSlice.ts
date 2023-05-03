@@ -27,9 +27,14 @@ export const counterSlice = createSlice({
         return flight;
       });
     },
+    deleteFlight: (state, action: PayloadAction<Flight>) => {
+      state.flights = state.flights.filter((flight) => {
+        return flight._id !== action.payload._id;
+      });
+    }
   },
 });
 
-export const { setFlights, updateFlights, updateFlight } = counterSlice.actions;
+export const { setFlights, updateFlights, updateFlight, deleteFlight } = counterSlice.actions;
 
 export default counterSlice.reducer;

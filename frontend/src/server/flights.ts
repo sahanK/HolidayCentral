@@ -63,3 +63,23 @@ export const updateFlight = async (flightData: Flight, token: string): Promise<U
     return null;
   }
 };
+
+export const deleteFlight = async (flightData: Flight, token: string): Promise<DeleteFlightAPIResponse | null> => {
+  try {
+    const response = await axios.delete(`https://holidaycentral-production.up.railway.app/api/v1/staff/flights/${flightData._id}`, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const apiResponse: DeleteFlightAPIResponse = response.data;
+    return apiResponse
+  } catch (error) {
+    console.error(error);
+    if (axios.isAxiosError(error)) {
+      const errorResponse: DeleteFlightAPIResponse = error.response?.data
+      return errorResponse;
+    }
+    return null;
+  }
+}

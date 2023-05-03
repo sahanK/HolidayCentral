@@ -16,7 +16,13 @@ type UpdateFlightAPIResponse = {
   message?: string;
   error?: string;
   data?: Flight;
-}
+};
+
+type DeleteFlightAPIResponse = {
+  success: boolean;
+  message?: string;
+  error?: string;
+};
 
 type LoginAPIResponse = {
   success: boolean;
