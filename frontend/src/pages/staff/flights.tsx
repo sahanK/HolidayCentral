@@ -3,30 +3,34 @@ import FileUploadModal from '@/components/FileUploadModal';
 import FlightsTable from '@/components/FlightsTable/FlightsTable';
 import BeatLoader from "react-spinners/BeatLoader";
 import { addFlights, getFlights } from '@/server/flights';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setFlights, updateFlights } from '@/redux/sclices/flightsSlice';
+import { useAuth } from '@/hooks/useAuth';
 
 const flights = () => {
-  const token = useAppSelector(state => state.user.token);
+  const { loading: pageLoading, token } = useAuth();
+  const flights = useAppSelector(state => state.flights.flights);
+  const dispatch = useAppDispatch();
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [flightsData, setFlightsData] = useState<Flight[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'danger', message: string }>();
 
   useEffect(() => {
     const fetchFlights = async () => {
-      if (token) {
+      if (token && !pageLoading) {
         setIsLoading(true);
         const apiResponse = await getFlights(token);
         if (apiResponse && apiResponse.data) {
-          setFlightsData(apiResponse.data);
+          dispatch(setFlights(apiResponse.data));
           setIsLoading(false)
         }
       }
     }
 
     fetchFlights();
-  }, [getFlights]);
+  }, [getFlights, pageLoading]);
 
   const uploadFile = async (selectedFile: any) => {
     if (token) {
@@ -39,10 +43,9 @@ const flights = () => {
           message: apiResponse.success ? apiResponse.message! : apiResponse.error!
         });
         if (apiResponse.data) {
-          setFlightsData((prevValue) => [...prevValue, ...apiResponse.data!])
+          dispatch(updateFlights(apiResponse.data));
         }
       }
-      setIsOpen(false);
     }
   }
 
@@ -52,7 +55,7 @@ const flights = () => {
     }
   }, [responseMessage]);
 
-  if (isLoading) {
+  if (isLoading || pageLoading) {
     return (
       <div className='h-full w-full flex flex-col justify-center items-center'>
         <BeatLoader/>
@@ -74,7 +77,7 @@ const flights = () => {
           Add new data
         </button>
       </div>
-      {!isLoading && flightsData.length > 0 && <FlightsTable data={flightsData} />}
+      {!isLoading && flights.length > 0 && <FlightsTable data={flights} />}
       <FileUploadModal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
