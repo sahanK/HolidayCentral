@@ -101,9 +101,9 @@ exports.saveReservation = asyncHandler(async (req, res, next) => {
     });
 
   // update flight seat count (reducing)
-  Flight.findByIdAndUpdate(flightId, { seatCount: (flight.seatCount - reqSeatCount) }, { new: true }, (err, user) => {
+  Flight.findByIdAndUpdate(flightId, { seatCount: (flight.seatCount - reqSeatCount) }, { new: true }, (err, reservationObj) => {
     if (err) throw err;
-    console.log(user);
+    console.log(reservationObj);
   });
 
   res.status(200).json({
@@ -138,9 +138,9 @@ exports.proceedReservation = asyncHandler(async (req, res, next) => {
   const reservationId = req.body.reservationId;
 
   // update proceed status of the reservation
-  FlightReservation.findByIdAndUpdate(reservationId, { proceed: true }, { new: true }, (err, user) => {
+  FlightReservation.findByIdAndUpdate(reservationId, { proceed: true }, { new: true }, (err, reservationObj) => {
     if (err) throw err;
-    console.log(user);
+    console.log(reservationObj);
   });
 
   res.status(200).json({
