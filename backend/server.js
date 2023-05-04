@@ -12,9 +12,10 @@ dotenv.config();
 connectDB();
 
 // Route files
+const auth = require('./routes/auth');
 const admin = require('./routes/admin');
 const staff = require('./routes/staff');
-const auth = require('./routes/auth');
+const agent = require('./routes/agent');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(fileUpload());
 app.use('/api/v1/admin', admin);
 app.use('/api/v1/staff', staff);
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/agent', agent);
 
 // Error handling middleware
 app.use(errorHandler);

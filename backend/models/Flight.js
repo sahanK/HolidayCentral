@@ -62,6 +62,10 @@ const FlightSchema = new mongoose.Schema({
     required: true,
   },
   duration: Number,
+  seatCount: {
+    type: Number,
+    required: true,
+  },
   created_at: {
     type: Date,
     default: Date.now()
