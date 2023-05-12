@@ -26,8 +26,9 @@ const FlightTableRow: React.FC<FlightTableRowProps> = ({ hotelData, onUpdateClic
       </td>
       <td className="px-6 py-4">
         {
-          hotelData.facilities.map((facility) => (
+          hotelData.facilities.map((facility, index) => (
             <div
+              key={index}
               className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1
               text-xs font-semibold text-blue-600"
             >
@@ -38,8 +39,9 @@ const FlightTableRow: React.FC<FlightTableRowProps> = ({ hotelData, onUpdateClic
       </td>
       <td className="px-6 py-4">
       {
-          hotelData.available_room_types.map((roomType) => (
+          hotelData.available_room_types.map((roomType, index) => (
             <div
+              key={index}
               className="inline-flex items-center gap-1 rounded-full bg-purple-50 px-2 py-1
               text-xs font-semibold text-purple-600"
             >
@@ -50,8 +52,9 @@ const FlightTableRow: React.FC<FlightTableRowProps> = ({ hotelData, onUpdateClic
       </td>
       <td className="px-6 py-4">
       {
-          hotelData.board_basis.map((basis) => (
+          hotelData.board_basis.map((basis, index) => (
             <div
+              key={index}
               className="inline-flex items-center gap-1 rounded-full bg-yellow-50 px-2 py-1
               text-xs font-semibold text-yellow-600"
             >

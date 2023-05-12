@@ -6,7 +6,7 @@ import { setToken, setUser } from '@/redux/sclices/userSlice';
 import { authLogin } from '@/server/auth';
 import ResponseMessage from '@/components/ResponseMessage';
 
-const login: React.FC = () => {
+const Login: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -76,4 +76,4 @@ const login: React.FC = () => {
   );
 };
 
-export default login;
+export default Login;

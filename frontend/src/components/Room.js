@@ -34,9 +34,10 @@ function Room({ room, fromdate, todate }) {
                     <Modal.Body>
                         <Carousel prevLabel='' nextLabel=''>
 
-                            {room.imageurls.map(url => {
+                            {room.imageurls.map((url, index) => {
                                 return <Carousel.Item>
                                     <img
+                                        key={index}
                                         className="d-block w-100"
                                         src={url}
                                         alt="hotel details"

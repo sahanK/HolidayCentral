@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setFlights, updateFlights } from '@/redux/sclices/flightsSlice';
 import { useAuth } from '@/hooks/useAuth';
 
-const flights = () => {
+const Flights = () => {
   const { loading: pageLoading, token } = useAuth();
   const flights = useAppSelector(state => state.flights.flights);
   const dispatch = useAppDispatch();
@@ -89,4 +89,4 @@ const flights = () => {
   );
 };
 
-export default flights;
+export default Flights;

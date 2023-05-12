@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setHotels, updateHotels } from '@/redux/sclices/hotelsClice';
 import HotelsTable from '@/components/HotelsTable/HotelsTable';
 
-const hotels: React.FC = () => {
+const Hotels: React.FC = () => {
   const { token, loading: pageLoading } = useAuth();
   const hotels = useAppSelector((state) => state.hotels.hotels);
   const dispatch = useAppDispatch();
@@ -89,4 +89,4 @@ const hotels: React.FC = () => {
   );
 };
 
-export default hotels;
+export default Hotels;

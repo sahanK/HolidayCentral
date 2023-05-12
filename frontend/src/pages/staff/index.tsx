@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 
-const staff: React.FC = () => {
+const Staff: React.FC = () => {
   const { loading } = useAuth();
   const router = useRouter();
 
@@ -35,4 +35,4 @@ const staff: React.FC = () => {
   );
 };
 
-export default staff;
+export default Staff;
