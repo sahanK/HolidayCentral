@@ -9,7 +9,7 @@ import moment from "moment";
 import { Option } from "antd/es/mentions";
 const { RangePicker } = DatePicker;
 
-function Hotels() {
+function hotels() {
 
     const [rooms, setrooms] = useState([])
     const [lording, setlording] = useState()
@@ -77,8 +77,8 @@ function Hotels() {
 
             <div className="row justify-content-center md-5">
                 {lording ? (<lording></lording>)
-                        : (rooms.map((room, index) => {
-                            return <div className='col-md-9' key={index}>
+                        : (rooms.map(room => {
+                            return <div className='col-md-9'>
                                 <Room room={room} fromdate={fromdate} todate={todate}/>
                             </div>
                         }))}
@@ -88,4 +88,4 @@ function Hotels() {
     )
 };
 
-export default Hotels;
+export default hotels;
