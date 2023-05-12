@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/*style sheet*\
+/*style sheet
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -51,4 +51,4 @@ input, select{
 .ant-picker-input input{
   border: none !important;
 }
-
+*/
