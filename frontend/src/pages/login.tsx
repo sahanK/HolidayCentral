@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import BeatLoader from "react-spinners/BeatLoader";
 import { useAppDispatch } from '@/redux/hooks';
 import { setToken, setUser } from '@/redux/sclices/userSlice';
 import { authLogin } from '@/server/auth';
 import ResponseMessage from '@/components/ResponseMessage';
-import { useRouter } from 'next/router';
 
-const login: React.FC = () => {
+const Login: React.FC = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
   const [emailInput, setEmailInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<{ type: "success" | "danger", message: string}>();
 
   const onLoginClick = async () => {
     if (emailInput !== '' && passwordInput !== '') {
+      setIsLoading(true);
       setResponseMessage(undefined);
       const apiResponse = await authLogin(emailInput, passwordInput);
+      setIsLoading(false);
       if (apiResponse && apiResponse.token && apiResponse.data && !apiResponse.error) {
         dispatch(setUser(apiResponse.data));
         dispatch(setToken(apiResponse.token));
@@ -60,8 +64,9 @@ const login: React.FC = () => {
                 e.preventDefault();
                 onLoginClick();
               }}
+              disabled={isLoading}
             >
-              <span className="inline-block mr-2">Login</span>
+              {isLoading ? <BeatLoader color='#FFFFFF' size={10} /> : <span className="inline-block mr-2">Login</span>}
             </button>
             {responseMessage && <ResponseMessage type={responseMessage.type} message={responseMessage.message} />}
           </div>
@@ -71,4 +76,4 @@ const login: React.FC = () => {
   );
 };
 
-export default login;
+export default Login;

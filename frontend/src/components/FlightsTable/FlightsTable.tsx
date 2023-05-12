@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FlightTableRow from './FlightTableRow';
 import UpdateFlightModal from '../UpdateFlightModal';
+import DeleteFlightModal from '../DeleteFlightModal';
 
 type FlightsTableProps = {
   data: Flight[]
@@ -8,10 +9,16 @@ type FlightsTableProps = {
 
 const FlightsTable: React.FC<FlightsTableProps> = ({ data }) => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState<boolean>(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
   const [selectedFlightData, setSelectedFlightData] = useState<Flight>();
 
-  const onUpdateClick = async (flight: Flight) => {
+  const onUpdateClick = (flight: Flight) => {
     setIsUpdateModalOpen(true);
+    setSelectedFlightData(flight);
+  };
+
+  const onDeleteClick = (flight: Flight) => {
+    setIsDeleteModalOpen(true);
     setSelectedFlightData(flight);
   };
   
@@ -36,13 +43,14 @@ const FlightsTable: React.FC<FlightsTableProps> = ({ data }) => {
               key={flightData._id}
               flightData={flightData}
               onUpdateClick={onUpdateClick}
-              onDeleteClick={() => {}}
+              onDeleteClick={onDeleteClick}
             />
           ))
         }
         </tbody>
       </table>
-      {selectedFlightData && <UpdateFlightModal isOpen={isUpdateModalOpen} setIsOpen={setIsUpdateModalOpen} flightData={selectedFlightData!} />}
+      {selectedFlightData && <UpdateFlightModal isOpen={isUpdateModalOpen} setIsOpen={setIsUpdateModalOpen} flightData={selectedFlightData} />}
+      {selectedFlightData && <DeleteFlightModal isOpen={isDeleteModalOpen} setIsOpen={setIsDeleteModalOpen} flightData={selectedFlightData} />}
     </div>
   );
 };

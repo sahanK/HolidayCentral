@@ -11,6 +11,32 @@ type GetFlightsAPIResponse = {
   data?: Flight[];
 };
 
+type UpdateFlightAPIResponse = {
+  success: boolean;
+  message?: string;
+  error?: string;
+  data?: Flight;
+};
+
+type DeleteFlightAPIResponse = {
+  success: boolean;
+  message?: string;
+  error?: string;
+};
+
+type AddHotelsAPIResponse = {
+  success: boolean;
+  message?: string;
+  error?: string;
+  data?: Hotel[];
+};
+
+type GetHotelsAPIResponse = {
+  success: boolean;
+  error?: string;
+  data?: Hotel[];
+};
+
 type LoginAPIResponse = {
   success: boolean;
   error?: string;

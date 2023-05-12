@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FileUploadModal from '@/components/FileUploadModal';
 import FlightTableRow from '@/components/FlightsTable/FlightTableRow';
 
-const packages: React.FC = () => {
+const Packages: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   
   return (
@@ -44,4 +44,4 @@ const packages: React.FC = () => {
   );
 };
 
-export default packages;
+export default Packages;

@@ -1,16 +1,12 @@
-import { useAppSelector } from '@/redux/hooks';
+import React from 'react';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import { useAuth } from '@/hooks/useAuth';
 
-const staff: React.FC = () => {
+const Staff: React.FC = () => {
+  const { loading } = useAuth();
   const router = useRouter();
-  const user = useAppSelector(state => state.user.user);
 
-  useEffect(() => {
-    if (!user || user.role !== 'staff') {
-      router.replace('/login');
-    }
-  }, [router, user]);
+  if (loading) return null;
 
   return (
     <div className='h-full w-full flex flex-row justify-center items-center space-x-10 p-10'>
@@ -39,4 +35,4 @@ const staff: React.FC = () => {
   );
 };
 
-export default staff;
+export default Staff;
