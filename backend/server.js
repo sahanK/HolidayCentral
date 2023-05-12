@@ -15,8 +15,8 @@ connectDB();
 const admin = require('./routes/admin');
 const staff = require('./routes/staff');
 const auth = require('./routes/auth');
-const roomsRoute = require("./routers/roomsroute")
-const bookingRoute = require("./routers/bookinRouts")
+const roomsRoute = require("./routes/roomsroute")
+const bookingRoute = require("./routes/bookinRouts")
 
 
 const app = express();
@@ -28,9 +28,9 @@ app.use(express.json());
 // Access files as req.files
 app.use(fileUpload());
 //access roos
-app.use('/api/rooms',roomsRoute)
+app.use('/api/v1/rooms',roomsRoute)
 //uplord data to booking
-app.use('/api/booking',bookingRoute)
+app.use('/api/v1/bookings',bookingRoute)
 // Mount routers
 app.use('/api/v1/admin', admin);
 app.use('/api/v1/staff', staff);
