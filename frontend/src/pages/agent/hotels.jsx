@@ -9,7 +9,7 @@ import moment from "moment";
 import { Option } from "antd/es/mentions";
 const { RangePicker } = DatePicker;
 
-function Hotels() {
+function hotels() {
 
     const [rooms, setrooms] = useState([])
     const [lording, setlording] = useState()
@@ -88,4 +88,4 @@ function Hotels() {
     )
 };
 
-export default Hotels;
+export default hotels;
