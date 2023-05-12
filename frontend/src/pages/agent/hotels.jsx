@@ -77,8 +77,8 @@ function Hotels() {
 
             <div className="row justify-content-center md-5">
                 {lording ? (<lording></lording>)
-                        : (rooms.map(room => {
-                            return <div className='col-md-9'>
+                        : (rooms.map((room, index) => {
+                            return <div className='col-md-9' key={index}>
                                 <Room room={room} fromdate={fromdate} todate={todate}/>
                             </div>
                         }))}
