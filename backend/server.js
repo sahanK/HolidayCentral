@@ -12,7 +12,6 @@ dotenv.config();
 connectDB();
 
 // Route files
-const auth = require('./routes/auth');
 const admin = require('./routes/admin');
 const staff = require('./routes/staff');
 const agent = require('./routes/agent');
