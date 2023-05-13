@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://holidaycentral-production.up.railway.app';
-
 export const addFlights = async (file: any, token: string): Promise<AddFlightsAPIResponse | null> => {
   try {
     const formData = new FormData();
@@ -86,9 +84,31 @@ export const deleteFlight = async (flightData: Flight, token: string): Promise<D
   }
 };
 
-export const searchFlights = async (token: string): Promise<GetFlightsAPIResponse | null> => {
+export const searchFlights = async (
+    token: string,
+    depCityInput: string,
+    depCountryInput: string,
+    depDateInput: string,
+    arrCityInput: string, 
+    arrCountryInput: string,
+    arrDateInput: string, 
+    cabinClassInput: string, 
+    airlineNameInput: string, 
+    airlineCountryInput: string
+
+  ): Promise<GetFlightsAPIResponse | null> => {
   try {
-    const response = await axios.get(BASE_URL + '/api/v1/agent/flights', {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/agent/flights`, {
+      "departure_city": depCityInput,
+      "departure_country": depCountryInput,
+      "departure_date": depDateInput,
+      "arrival_city": arrCityInput,
+      "arrival_country": arrCountryInput,
+      "arrival_date": arrDateInput,
+      "cabin_class": cabinClassInput,
+      "airline_name": airlineNameInput,
+      "airline_country": airlineCountryInput
+    }, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -100,6 +120,30 @@ export const searchFlights = async (token: string): Promise<GetFlightsAPIRespons
     console.error(error);
     if (axios.isAxiosError(error)) {
       const errorResponse: GetFlightsAPIResponse = error.response?.data
+      return errorResponse;
+    }
+    return null;
+  }
+};
+
+export const addFlightToCart = async (token: string, flightId: string, reqSeatCount: string, userId: string): Promise<UpdateFlightAPIResponse | null> => {
+  try {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/agent/reserve-flight`, {
+      "flightId": flightId,
+      "reqSeatCount": reqSeatCount,
+      "userId": userId
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const apiResponse: UpdateFlightAPIResponse = response.data;
+    return apiResponse
+  } catch (error) {
+    console.error(error);
+    if (axios.isAxiosError(error)) {
+      const errorResponse: UpdateFlightAPIResponse = error.response?.data
       return errorResponse;
     }
     return null;

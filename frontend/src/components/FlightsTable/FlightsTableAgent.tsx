@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import FlightTableRowAgent from './FlightTableRowAgent';
-import UpdateFlightModal from '../UpdateFlightModal';
+import ViewFlightModal from '../ViewFlightModal';
 
 type FlightsTableProps = {
   data: Flight[]
 }
 
 const FlightsTableAgent: React.FC<FlightsTableProps> = ({ data }) => {
-  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState<boolean>(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState<boolean>(false);
   const [selectedFlightData, setSelectedFlightData] = useState<Flight>();
 
   const onProceedClick = async (flight: Flight) => {
-    setIsUpdateModalOpen(true);
+    setIsViewModalOpen(true);
     setSelectedFlightData(flight);
   };
   
@@ -41,7 +41,7 @@ const FlightsTableAgent: React.FC<FlightsTableProps> = ({ data }) => {
         }
         </tbody>
       </table>
-      {selectedFlightData && <UpdateFlightModal isOpen={isUpdateModalOpen} setIsOpen={setIsUpdateModalOpen} flightData={selectedFlightData!} />}
+      {selectedFlightData && <ViewFlightModal isOpen={isViewModalOpen} setIsOpen={setIsViewModalOpen} flightData={selectedFlightData!} />}
     </div>
   );
 };
