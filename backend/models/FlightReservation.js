@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const FlightReservationSchema = new mongoose.Schema({
   flightId: {
-    type: Number,
+    type: String,
     required: true
   },
   userId: {
-    type: Number,
+    type: String,
     required: true
   },
   atCart: {

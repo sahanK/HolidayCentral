@@ -92,7 +92,7 @@ exports.saveReservation = asyncHandler(async (req, res, next) => {
     userId: userId,
     seatCount: reqSeatCount
   }];
-  await Flight.insertMany(reservation)
+  await FlightReservation.insertMany(reservation)
     .then((docs) => {
       console.log('Successfully inserted reservations', docs);
     })
@@ -101,10 +101,10 @@ exports.saveReservation = asyncHandler(async (req, res, next) => {
     });
 
   // update flight seat count (reducing)
-  Flight.findByIdAndUpdate(flightId, { seatCount: (flight.seatCount - reqSeatCount) }, { new: true }, (err, reservationObj) => {
-    if (err) throw err;
-    console.log(reservationObj);
-  });
+  // Flight.findByIdAndUpdate(flightId, { seatCount: (flight.seatCount - reqSeatCount) }, { new: true }, (err, reservationObj) => {
+  //   if (err) throw err;
+  //   console.log(reservationObj);
+  // });
 
   res.status(200).json({
     success: true,

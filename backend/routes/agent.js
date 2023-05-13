@@ -13,9 +13,9 @@ const {
 const { protect, authorize } = require('../middleware/auth');
 
 router
-  .get('/flights', protect, authorize('agent'), searchFlights)
-  .get('/verify', protect, authorize('agent'), selectFlight)
-  .post('/save', protect, authorize('agent'), saveReservation)
+  .post('/flights', protect, authorize('agent'), searchFlights)
+  .get('/verify-flight', protect, authorize('agent'), selectFlight)
+  .post('/reserve-flight', protect, authorize('agent'), saveReservation)
   .get('/cart', protect, authorize('agent'), getCartItems)
   .put('/proceed', protect, authorize('agent'), proceedReservation)
   .delete('/remove', protect, authorize('agent'), deleteReservation);
