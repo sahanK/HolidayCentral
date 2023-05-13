@@ -8,7 +8,10 @@ exports.searchFlights = asyncHandler(async (req, res, next) => {
 
   let flightsParam = "";
 
-  if (!req.body.airline_name || !req.body.airline_country) {
+  console.log(req.body.airline_name);
+  console.log(req.body.airline_country);
+
+  if (req.body.airline_name && req.body.airline_country) {
     // create object with mandatory fields
     flightsParam = {
       departure_city: req.body.departure_city,
@@ -18,6 +21,35 @@ exports.searchFlights = asyncHandler(async (req, res, next) => {
       arrival_country: req.body.arrival_country,
       arrival_date: req.body.arrival_date,
       cabin_class: req.body.cabin_class,
+      airline_name: req.body.airline_name,
+      airline_country: req.body.airline_country
+    };
+    console.log("called 1");
+
+  } else if (req.body.airline_name) {
+    // create object with mandatory fields and airline name (optional)
+    flightsParam = {
+      departure_city: req.body.departure_city,
+      departure_country: req.body.departure_country,
+      departure_date: req.body.departure_date,
+      arrival_city: req.body.arrival_city,
+      arrival_country: req.body.arrival_country,
+      arrival_date: req.body.arrival_date,
+      cabin_class: req.body.cabin_class,
+      airline_name: req.body.airline_name
+    };
+
+  } else if (req.body.airline_country) {
+    // create object with mandatory fields and airline country (optional)
+    flightsParam = {
+      departure_city: req.body.departure_city,
+      departure_country: req.body.departure_country,
+      departure_date: req.body.departure_date,
+      arrival_city: req.body.arrival_city,
+      arrival_country: req.body.arrival_country,
+      arrival_date: req.body.arrival_date,
+      cabin_class: req.body.cabin_class,
+      airline_country: req.body.airline_name
     };
 
   } else {
@@ -29,12 +61,11 @@ exports.searchFlights = asyncHandler(async (req, res, next) => {
       arrival_city: req.body.arrival_city,
       arrival_country: req.body.arrival_country,
       arrival_date: req.body.arrival_date,
-      cabin_class: req.body.cabin_class,
-      airline_name: req.body.airline_name,
-      airline_country: req.body.airline_country,
+      cabin_class: req.body.cabin_class
     };
   }
 
+  console.log(flightsParam);
   // search flights
   const flights = await Flight.find(flightsParam);
 
