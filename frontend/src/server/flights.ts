@@ -149,3 +149,43 @@ export const addFlightToCart = async (token: string, flightId: string, reqSeatCo
     return null;
   }
 };
+
+export const viewCart = async (token: string, userId: string): Promise<GetCartAPIResponse | null> => {
+  try {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/agent/cart/${userId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const apiResponse: GetCartAPIResponse = response.data;
+    return apiResponse;
+  } catch (error) {
+    console.error(error);
+    if (axios.isAxiosError(error)) {
+      const errorResponse: GetCartAPIResponse = error.response?.data
+      return errorResponse;
+    }
+    return null;
+  }
+};
+
+export const removeReservation = async (token: string, cartData: Cart): Promise<DeleteFlightAPIResponse | null> => {
+  try {
+    const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/agent/remove-reservation/${cartData._id}`, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const apiResponse: DeleteFlightAPIResponse = response.data;
+    return apiResponse
+  } catch (error) {
+    console.error(error);
+    if (axios.isAxiosError(error)) {
+      const errorResponse: DeleteFlightAPIResponse = error.response?.data
+      return errorResponse;
+    }
+    return null;
+  }
+};
