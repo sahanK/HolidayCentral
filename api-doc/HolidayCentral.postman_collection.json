@@ -1,0 +1,920 @@
+{
+	"info": {
+		"_postman_id": "17a58337-7075-413d-a7cd-f7d3df5e42e0",
+		"name": "HolidayCentral",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11837870"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "addUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY3YzMyMTIzZjIxYjJhYWExNWJjOSIsImlhdCI6MTY4MzkwNTcyOSwiZXhwIjoxNjgzOTkyMTI5fQ.oOdLqyp2zWMbWqvVUp0kV8IATOZ9uaGXTH7ys2fAz-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Sahan\",\n    \"last_name\": \"Kaushalya\",\n    \"email\": \"sahankaushalya01@gmail.com\",\n    \"password\": \"123\",\n    \"role\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/admin/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY3YzMyMTIzZjIxYjJhYWExNWJjOSIsImlhdCI6MTY4MzkwNTcyOSwiZXhwIjoxNjgzOTkyMTI5fQ.oOdLqyp2zWMbWqvVUp0kV8IATOZ9uaGXTH7ys2fAz-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/admin/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY3YzMyMTIzZjIxYjJhYWExNWJjOSIsImlhdCI6MTY4MzkwNTcyOSwiZXhwIjoxNjgzOTkyMTI5fQ.oOdLqyp2zWMbWqvVUp0kV8IATOZ9uaGXTH7ys2fAz-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/admin/users/644f712d96cce55e7dab36a6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users",
+								"644f712d96cce55e7dab36a6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY3YzMyMTIzZjIxYjJhYWExNWJjOSIsImlhdCI6MTY4MzkwNTcyOSwiZXhwIjoxNjgzOTkyMTI5fQ.oOdLqyp2zWMbWqvVUp0kV8IATOZ9uaGXTH7ys2fAz-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Sahan\",\n    \"last_name\": \"Kaushalya\",\n    \"email\": \"sahankaushalya01@gmail.com\",\n    \"role\": \"agent\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/admin/users/645e5d502a3b8e859e8e7e9e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users",
+								"645e5d502a3b8e859e8e7e9e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY3YzMyMTIzZjIxYjJhYWExNWJjOSIsImlhdCI6MTY4MzkwNTcyOSwiZXhwIjoxNjgzOTkyMTI5fQ.oOdLqyp2zWMbWqvVUp0kV8IATOZ9uaGXTH7ys2fAz-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/admin/users/645e5d502a3b8e859e8e7e9e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users",
+								"645e5d502a3b8e859e8e7e9e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"staffuser\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "staff",
+			"item": [
+				{
+					"name": "flights",
+					"item": [
+						{
+							"name": "addFlights",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/sahanwalpita/NIBM/Web API/HolidayCentral/backend/data/flights.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/flights",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"flights"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getFlights",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MzEyNTczNywiZXhwIjoxNjgzMjEyMTM3fQ.KcVsZMvKrdZCQeNq2VzXiKiZ9VzQkdFRRsKHKmvp1dc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/flights",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"flights"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteFlights",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MzkxNzUzMywiZXhwIjoxNjg0MDAzOTMzfQ.BewTWsQiXDF32WOcTbNKstCTAfZ1DhZthlpytUkdbE0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/flights",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"flights"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getFlight",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/flights/644ea2c4a4e10af9dbe86700",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"flights",
+										"644ea2c4a4e10af9dbe86700"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateFlight",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MzEyNTczNywiZXhwIjoxNjgzMjEyMTM3fQ.KcVsZMvKrdZCQeNq2VzXiKiZ9VzQkdFRRsKHKmvp1dc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \n        \"arrival_airport\": \"Los Angeles LAX\",\n        \"arrival_city\": \"Los Angeles\",\n        \"arrival_country\": \"United States\",\n        \"arrival_iata\": \"LAX\",\n        \"departure_airport\": \"New York JFK\",\n        \"departure_city\": \"New York\",\n        \"departure_country\": \"United States\",\n        \"departure_iata\": \"JFK\",\n        \"arrival_date\": \"2023-04-30T00:00:00.000Z\",\n        \"departure_date\": \"2023-04-28T00:00:00.000Z\",\n        \"cabin_class\": \"Economy\",\n        \"airline_name\": \"Delta Air Lines\",\n        \"airline_country\": \"United States\",\n        \"airline_iata\": \"DL\",\n        \"ticket_price_usd\": 349,\n        \"duration\": 5.6\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/flights/6451372e3741ef09e41f2dc4",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"flights",
+										"6451372e3741ef09e41f2dc4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteFlight",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MzEyNTczNywiZXhwIjoxNjgzMjEyMTM3fQ.KcVsZMvKrdZCQeNq2VzXiKiZ9VzQkdFRRsKHKmvp1dc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/flights/6451372e3741ef09e41f2dc434",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"flights",
+										"6451372e3741ef09e41f2dc434"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "hotels",
+					"item": [
+						{
+							"name": "addHotels",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/sahanwalpita/NIBM/Web API/hotels.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/hotels",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"hotels"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getHotels",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MzEyNTczNywiZXhwIjoxNjgzMjEyMTM3fQ.KcVsZMvKrdZCQeNq2VzXiKiZ9VzQkdFRRsKHKmvp1dc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/hotels",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"hotels"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteHotels",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/hotels",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"hotels"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getHotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/hotels/644ea30ba4e10af9dbe8671e",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"hotels",
+										"644ea30ba4e10af9dbe8671e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateHotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hotel_name\": \"Luxury Hotel\",\n    \"destination_country\": \"United States\",\n    \"destination_city\": \"Los Angeles\",\n    \"star_rating\": 4.5,\n    \"price_per_night\": 250,\n    \"facilities\": [\n        \"Pool\",\n        \"Gym\",\n        \"Spa\",\n        \"Free WiFi\",\n        \"Restaurant\"\n    ],\n    \"available_room_types\": [\n        \"Deluxe\",\n        \"Super Deluxe\",\n        \"Suite\"\n    ],\n    \"board_basis\": [\n        \"Full Board\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/hotels/644ea30ba4e10af9dbe8671e",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"hotels",
+										"644ea30ba4e10af9dbe8671e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteHotel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/hotels/644e9bf1a6419299a2373a12",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"hotels",
+										"644e9bf1a6419299a2373a12"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "packages",
+					"item": [
+						{
+							"name": "addPackages",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/sahanwalpita/NIBM/Web API/packages.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/packages",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"packages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletePackages",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/packages",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"packages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getPackages",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MzEyNTczNywiZXhwIjoxNjgzMjEyMTM3fQ.KcVsZMvKrdZCQeNq2VzXiKiZ9VzQkdFRRsKHKmvp1dc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/packages",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"packages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getPackage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/packages/644ea357a4e10af9dbe86749",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"packages",
+										"644ea357a4e10af9dbe86749"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatePackage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"package_name\": \"Romantic Getaway\",\n    \"hotel_name\": \"The Ritz-Carlton\",\n    \"destination_country\": \"Italy\",\n    \"destination_city\": \"Rome\",\n    \"duration\": 7,\n    \"num_travelers\": 2,\n    \"specialty\": \"Honeymoon\",\n    \"price_usd\": 2800,\n    \"rating\": 4.8\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/packages/644ea357a4e10af9dbe86749",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"packages",
+										"644ea357a4e10af9dbe86749"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletePackage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGY4MTRiNTQzOWYzYmQ0ZDVkMTRjZiIsImlhdCI6MTY4MjkzMjA4NSwiZXhwIjoxNjgzMDE4NDg1fQ.dObqGDXwBJaoRNUZzoc7QvGOpdw7q89fufmfcfA_wYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/staff/packages/644e84641a51a38c6f6f78af",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"staff",
+										"packages",
+										"644e84641a51a38c6f6f78af"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "agent",
+			"item": [
+				{
+					"name": "rooms",
+					"item": [
+						{
+							"name": "getAllRooms",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/rooms/getallrooms",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"rooms",
+										"getallrooms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "bookRoom",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/bookings/bookroom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										"bookroom"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
