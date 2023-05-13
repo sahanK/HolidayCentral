@@ -8,9 +8,6 @@ exports.searchFlights = asyncHandler(async (req, res, next) => {
 
   let flightsParam = "";
 
-  console.log(req.body.airline_name);
-  console.log(req.body.airline_country);
-
   if (req.body.airline_name && req.body.airline_country) {
     // create object with mandatory fields
     flightsParam = {
@@ -24,7 +21,6 @@ exports.searchFlights = asyncHandler(async (req, res, next) => {
       airline_name: req.body.airline_name,
       airline_country: req.body.airline_country
     };
-    console.log("called 1");
 
   } else if (req.body.airline_name) {
     // create object with mandatory fields and airline name (optional)
@@ -65,7 +61,6 @@ exports.searchFlights = asyncHandler(async (req, res, next) => {
     };
   }
 
-  console.log(flightsParam);
   // search flights
   const flights = await Flight.find(flightsParam);
 
