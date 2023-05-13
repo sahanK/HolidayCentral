@@ -139,12 +139,9 @@ exports.saveReservation = asyncHandler(async (req, res, next) => {
 });
 
 exports.getCartItems = asyncHandler(async (req, res, next) => {
-
-  const userId = req.body.userId;
-
   // search cart items
   const pendingItems = await FlightReservation.find({
-    userId: userId,
+    userId: req.params.userId,
     atCart: true,
     proceed: false
   });
@@ -176,7 +173,7 @@ exports.proceedReservation = asyncHandler(async (req, res, next) => {
 });
 
 exports.deleteReservation = asyncHandler(async (req, res, next) => {
-  const reservation = await Flight.findById(req.params.id);
+  const reservation = await FlightReservation.findById(req.params.id);
 
   if (!reservation) {
     return next(new ErrorResponse(`Could not find reservation by id: ${req.params.id}`, 404));

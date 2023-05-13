@@ -16,8 +16,8 @@ router
   .post('/flights', protect, authorize('agent'), searchFlights)
   .get('/verify-flight', protect, authorize('agent'), selectFlight)
   .post('/reserve-flight', protect, authorize('agent'), saveReservation)
-  .get('/cart', protect, authorize('agent'), getCartItems)
-  .put('/proceed', protect, authorize('agent'), proceedReservation)
-  .delete('/remove', protect, authorize('agent'), deleteReservation);
+  .get('/cart/:userId', protect, authorize('agent'), getCartItems)
+  .put('/proceed-reservation/:id', protect, authorize('agent'), proceedReservation)
+  .delete('/remove-reservation/:id', protect, authorize('agent'), deleteReservation);
 
 module.exports = router;
