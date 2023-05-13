@@ -12,8 +12,10 @@ dotenv.config();
 connectDB();
 
 // Route files
+const auth = require('./routes/auth');
 const admin = require('./routes/admin');
 const staff = require('./routes/staff');
+const agent = require('./routes/agent');
 const auth = require('./routes/auth');
 const roomsRoute = require("./routes/roomsroute")
 const bookingRoute = require("./routes/bookinRouts")
@@ -35,6 +37,7 @@ app.use('/api/v1/bookings',bookingRoute)
 app.use('/api/v1/admin', admin);
 app.use('/api/v1/staff', staff);
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/agent', agent);
 
 // Error handling middleware
 app.use(errorHandler);

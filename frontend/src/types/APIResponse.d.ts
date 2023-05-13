@@ -24,6 +24,12 @@ type DeleteFlightAPIResponse = {
   error?: string;
 };
 
+type GetCartAPIResponse = {
+  success: boolean;
+  error?: string;
+  data?: Cart[];
+};
+
 type AddHotelsAPIResponse = {
   success: boolean;
   message?: string;
