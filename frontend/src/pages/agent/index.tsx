@@ -2,7 +2,7 @@ import { useAppSelector } from '@/redux/hooks';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
-const agent: React.FC = () => {
+const Agent: React.FC = () => {
   const router = useRouter();
   const user = useAppSelector(state => state.user.user);
 
@@ -39,4 +39,4 @@ const agent: React.FC = () => {
   );
 };
 
-export default agent;
+export default Agent;

@@ -6,7 +6,7 @@ import { useAppSelector } from '@/redux/hooks';
 import { useRouter } from 'next/router';
 import CartTable from '@/components/FlightsTable/CartTable';
 
-const flights = () => {
+const FlightCart = () => {
   const token = useAppSelector(state => state.user.token);
   const router = useRouter();
   const user = useAppSelector(state => state.user.user);
@@ -61,4 +61,4 @@ const flights = () => {
   );
 };
 
-export default flights;
+export default FlightCart;

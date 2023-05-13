@@ -4,7 +4,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import { searchFlights } from '@/server/flights';
 import { useAppSelector } from '@/redux/hooks';
 
-const flights = () => {
+const Flights = () => {
   const token = useAppSelector(state => state.user.token);
   const [flightsData, setFlightsData] = useState<Flight[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -153,4 +153,4 @@ const flights = () => {
   );
 };
 
-export default flights;
+export default Flights;
